@@ -16,7 +16,7 @@
  '(org-agenda-files (quote ("~/.emacs.d/org-mode")))
  '(package-selected-packages
    (quote
-    (intero yaml-mode web-mode vagrant-tramp use-package sublime-themes smex rust-mode rsense rbenv ponylang-mode paredit org-plus-contrib org markdown-mode magit inf-ruby ido-ubiquitous go-snippets go-mode go-autocomplete geiser fold-this flycheck-rust flycheck-haskell exec-path-from-shell elm-mode edts company-ghci company-ghc company-cabal color-theme cider better-defaults alchemist)))
+    (racer intero yaml-mode web-mode vagrant-tramp use-package sublime-themes smex rust-mode rsense rbenv ponylang-mode paredit org-plus-contrib org markdown-mode magit inf-ruby ido-ubiquitous go-snippets go-mode go-autocomplete geiser fold-this flycheck-rust flycheck-haskell exec-path-from-shell elm-mode edts company-ghci company-ghc company-cabal color-theme cider better-defaults alchemist)))
  '(safe-local-variable-values (quote ((encoding . utf-8))))
  '(tramp-default-method "scpx")
  '(web-mode-code-indent-offset 2)
@@ -243,6 +243,21 @@
                 (setq indent-tabs-mode t)
                 (setq show-trailing-whitespace t)
                 (c-set-style "linux-tabs-only")))))
+
+;; Rust
+(use-package rust-mode
+  :ensure t
+  :config
+  (define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
+  (setq company-tooltip-align-annotations t))
+
+(use-package racer
+  :ensure t
+  :config
+  (add-hook 'rust-mode-hook #'racer-mode)
+  (add-hook 'racer-mode-hook #'eldoc-mode)
+  (add-hook 'racer-mode-hook #'company-mode)
+  (setq racer-rust-src-path "~/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"))
 
 (provide 'init)
 ;;; init.el ends here
