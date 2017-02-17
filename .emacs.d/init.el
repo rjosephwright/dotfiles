@@ -16,7 +16,7 @@
  '(org-agenda-files (quote ("~/.emacs.d/org-mode")))
  '(package-selected-packages
    (quote
-    (racer intero yaml-mode web-mode vagrant-tramp use-package sublime-themes smex rust-mode rsense rbenv ponylang-mode paredit org-plus-contrib org markdown-mode magit inf-ruby ido-ubiquitous go-snippets go-mode go-autocomplete geiser fold-this flycheck-rust flycheck-haskell exec-path-from-shell elm-mode edts company-ghci company-ghc company-cabal color-theme cider better-defaults alchemist)))
+    (hindent haskell-snippets racer intero yaml-mode web-mode vagrant-tramp use-package sublime-themes smex rust-mode rsense rbenv ponylang-mode paredit org-plus-contrib org markdown-mode magit inf-ruby ido-ubiquitous go-snippets go-mode go-autocomplete geiser fold-this flycheck-rust exec-path-from-shell elm-mode edts company-ghci company-ghc company-cabal color-theme cider better-defaults alchemist)))
  '(safe-local-variable-values (quote ((encoding . utf-8))))
  '(tramp-default-method "scpx")
  '(web-mode-code-indent-offset 2)
@@ -57,12 +57,10 @@
     exec-path-from-shell
     f
     flycheck
-    flycheck-haskell
     flycheck-rust
     go-autocomplete
     go-mode
     go-snippets
-    haskell-mode
     inf-ruby
     magit
     markdown-mode
@@ -151,10 +149,21 @@
    geiser-repl-query-on-kill-p nil))
 
 ;; Haskell
+(use-package haskell-mode
+  :ensure t)
+
+(use-package haskell-snippets
+  :ensure t)
+
 (use-package intero
   :ensure t
   :config
   (add-hook 'haskell-mode-hook 'intero-mode))
+
+(use-package hindent
+  :ensure t
+  :config
+  (add-hook 'haskell-mode-hook #'hindent-mode))
 
 ;; Flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
