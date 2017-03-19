@@ -164,8 +164,9 @@
   :ensure t
   :config
   (add-hook 'haskell-mode-hook #'hindent-mode)
-  (add-hook 'before-save-hook #'hindent-reformat-buffer)
-  (setq hindent-style "gibiansky"))
+  (setq
+   hindent-reformat-buffer-on-save t
+   hindent-style "gibiansky"))
 
 ;; Flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
