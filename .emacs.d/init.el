@@ -16,7 +16,7 @@
  '(org-agenda-files (quote ("~/.emacs.d/org-mode")))
  '(package-selected-packages
    (quote
-    (hindent haskell-snippets racer intero yaml-mode web-mode vagrant-tramp use-package sublime-themes smex rust-mode rsense rbenv ponylang-mode paredit org-plus-contrib org markdown-mode magit inf-ruby ido-ubiquitous go-snippets go-mode go-autocomplete geiser fold-this flycheck-rust exec-path-from-shell elm-mode edts company-ghci company-ghc company-cabal color-theme cider better-defaults alchemist)))
+    (auctex hindent haskell-snippets racer intero yaml-mode web-mode vagrant-tramp use-package sublime-themes smex rust-mode rsense rbenv ponylang-mode paredit org-plus-contrib org markdown-mode magit inf-ruby ido-ubiquitous go-snippets go-mode go-autocomplete geiser fold-this flycheck-rust exec-path-from-shell elm-mode edts company-ghci company-ghc company-cabal color-theme cider better-defaults alchemist)))
  '(safe-local-variable-values (quote ((encoding . utf-8))))
  '(tramp-default-method "scpx")
  '(web-mode-code-indent-offset 2)
@@ -269,6 +269,13 @@
   (add-hook 'racer-mode-hook #'eldoc-mode)
   (add-hook 'racer-mode-hook #'company-mode)
   (setq racer-rust-src-path "~/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"))
+
+;; TeX
+(use-package tex
+  :ensure auctex
+  :defer t
+  :config
+  (setq TeX-auto-save t))
 
 (provide 'init)
 ;;; init.el ends here
