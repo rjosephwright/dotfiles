@@ -16,7 +16,7 @@
  '(org-agenda-files (quote ("~/.emacs.d/org-mode")))
  '(package-selected-packages
    (quote
-    (auctex hindent haskell-snippets racer intero yaml-mode web-mode vagrant-tramp use-package sublime-themes smex rust-mode rsense rbenv ponylang-mode paredit org-plus-contrib org markdown-mode magit inf-ruby ido-ubiquitous go-snippets go-mode go-autocomplete geiser fold-this flycheck-rust exec-path-from-shell elm-mode edts company-ghci company-ghc company-cabal color-theme cider better-defaults alchemist)))
+    (auto-virtualenv pyvenv hindent haskell-snippets racer intero yaml-mode web-mode vagrant-tramp use-package sublime-themes smex rust-mode rsense rbenv ponylang-mode paredit org-plus-contrib org markdown-mode magit inf-ruby ido-ubiquitous go-snippets go-mode go-autocomplete geiser fold-this flycheck-rust exec-path-from-shell elm-mode edts company-ghci company-ghc company-cabal color-theme cider better-defaults alchemist)))
  '(safe-local-variable-values (quote ((encoding . utf-8))))
  '(tramp-default-method "scpx")
  '(web-mode-code-indent-offset 2)
@@ -216,6 +216,12 @@
                           (local-set-key (kbd "C-c i") 'go-goto-imports)))
 (add-hook 'go-mode-hook (lambda ()
                           (local-set-key (kbd "M-.") 'godef-jump)))
+
+;; Python
+(use-package auto-virtualenv
+  :ensure t
+  :config
+  (add-hook 'window-configuration-change-hook 'auto-virtualenv-set-virtualenv))
 
 (use-package vagrant-tramp
   :ensure t
