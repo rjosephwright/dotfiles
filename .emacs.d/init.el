@@ -280,12 +280,12 @@
   (add-hook 'racer-mode-hook #'company-mode)
   (setq racer-rust-src-path "~/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"))
 
-;; TeX
-(use-package tex
-  :ensure auctex
-  :defer t
+;; Writing
+(use-package adoc-mode
+  :ensure t
   :config
-  (setq TeX-auto-save t))
+  (autoload 'adoc-mode "adoc-mode" nil t)
+  (add-to-list 'auto-mode-alist '("\\.asc\\'" . adoc-mode)))
 
 (provide 'init)
 ;;; init.el ends here
