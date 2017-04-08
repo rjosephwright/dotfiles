@@ -217,7 +217,10 @@
 (add-hook 'go-mode-hook (lambda ()
                           (local-set-key (kbd "M-.") 'godef-jump)))
 
-(eval-after-load 'tramp '(vagrant-tramp-enable))
+(use-package vagrant-tramp
+  :ensure t
+  :config
+  (eval-after-load 'tramp '(vagrant-tramp-add-method)))
 
 ;; Clojure
 (require 'clojure-mode)
