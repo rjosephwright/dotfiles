@@ -53,8 +53,6 @@
     erlang
     exec-path-from-shell
     f
-    flycheck
-    flycheck-rust
     go-autocomplete
     go-mode
     go-snippets
@@ -79,6 +77,15 @@
 
 (eval-when-compile
   (require 'use-package))
+
+;; Flycheck
+(use-package flycheck
+  :ensure t
+  :config
+  (add-hook 'after-init-hook #'global-flycheck-mode))
+
+(use-package flycheck-rust
+  :ensure t)
 
 ;; Appearance
 (setq inhibit-splash-screen t)
@@ -164,9 +171,6 @@
    hindent-reformat-buffer-on-save t
    hindent-style "gibiansky"))
 
-;; Flycheck
-(add-hook 'after-init-hook #'global-flycheck-mode)
-
 ;; Ruby
 (require 'rbenv)
 (global-rbenv-mode)
@@ -180,6 +184,16 @@
 (setq alchemist-goto-elixir-source-dir "~/opt/brew/Cellar/elixir/1.3.0/src/elixir-1.3.0")
 
 ;; Web Mode
+(defun use-local-eslint ()
+  "Use the eslint that is installed in a local `node_modules` directory."
+  (let* ((root (locate-dominating-file
+                (or (buffer-file-name) default-directory)
+                "node_modules"))
+         (eslint (and root
+                      (expand-file-name "node_modules/.bin/eslint"
+                                        root))))
+    (when (and eslint (file-executable-p eslint))
+      (setq-local flycheck-javascript-eslint-executable eslint))))
 (use-package web-mode
   :ensure t
   :config
@@ -189,6 +203,8 @@
   (add-to-list 'auto-mode-alist '("\\.js[x]?\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.tpl\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.handlebars\\'" . web-mode))
+  (flycheck-add-mode 'javascript-eslint 'web-mode)
+  (add-hook 'flycheck-mode-hook #'use-local-eslint)
   (setq
    web-mode-code-indent-offset 2
    web-mode-css-indent-offset 2
