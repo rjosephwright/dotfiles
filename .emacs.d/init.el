@@ -34,8 +34,7 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 (defvar package-list
-  '(alchemist
-    async
+  '(async
     better-defaults
     cider
     clojure-mode
@@ -46,7 +45,6 @@
     company-ghci
     dash
     edts
-    elixir-mode
     elm-mode
     erlang
     exec-path-from-shell
@@ -173,12 +171,6 @@
 (add-hook 'ruby-mode-hook 'robe-mode)
 (add-to-list 'auto-mode-alist '("\\.ru\\'" . ruby-mode))
 
-;; Elixir
-(require 'elixir-mode)
-(require 'alchemist)
-(setq alchemist-goto-erlang-source-dir "~/opt/brew/Cellar/erlang-r19/19.0.1/share/src/otp-OTP-19.0.1")
-(setq alchemist-goto-elixir-source-dir "~/opt/brew/Cellar/elixir/1.3.0/src/elixir-1.3.0")
-
 ;; Web Mode
 (use-package web-mode
   :ensure t
@@ -212,6 +204,17 @@
 (defun my-after-init-hook ()
   "Start Erlang Development Tool Suite."
   (require 'edts-start))
+;; Elixir
+(use-package elixir-mode
+  :ensure t
+  :mode "\\.ex[s]?\\'")
+(use-package alchemist
+  :ensure t
+  :mode "\\.ex[s]?\\'"
+  :config
+  (setq
+   alchemist-goto-erlang-source-dir "~/opt/brew/Cellar/erlang-r19/19.0.1/share/src/otp-OTP-19.0.1"
+   alchemist-goto-elixir-source-dir "~/opt/brew/Cellar/elixir/1.3.0/src/elixir-1.3.0"))
 
 ;; Go
 (require 'go-mode)
