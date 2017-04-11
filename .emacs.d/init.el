@@ -36,8 +36,6 @@
 (defvar package-list
   '(async
     better-defaults
-    cider
-    clojure-mode
     color-theme
     company
     company-cabal
@@ -224,10 +222,16 @@
   (eval-after-load 'tramp '(vagrant-tramp-add-method)))
 
 ;; Clojure
-(require 'clojure-mode)
-(define-clojure-indent
-  (alet 'defun)
-  (mlet 'defun))
+(use-package clojure-mode
+  :ensure t
+  :config
+  (define-clojure-indent
+    (alet 'defun)
+    (mlet 'defun)))
+(use-package cider
+  :ensure t
+  :config
+  (setq cider-prompt-for-symbol nil))
 
 ;; Linux kernel
 (defun c-lineup-arglist-tabs-only (_)
