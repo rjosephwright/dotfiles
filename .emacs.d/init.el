@@ -56,7 +56,6 @@
     queue
     rbenv
     rsense
-    rust-mode
     sbt-mode
     smex
     sublime-themes
