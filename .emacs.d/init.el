@@ -44,9 +44,6 @@
     dash
     elm-mode
     f
-    go-autocomplete
-    go-mode
-    go-snippets
     inf-ruby
     magit
     markdown-mode
@@ -103,7 +100,8 @@
 (use-package exec-path-from-shell
   :ensure t
   :config
-  (exec-path-from-shell-initialize))
+  (exec-path-from-shell-initialize)
+  (exec-path-from-shell-copy-env "GOPATH"))
 
 (use-package paredit
   :ensure t)
@@ -199,16 +197,20 @@
    alchemist-goto-elixir-source-dir "~/opt/brew/Cellar/elixir/1.3.0/src/elixir-1.3.0"))
 
 ;; Go
-(require 'go-mode)
-(require 'go-autocomplete)
-(require 'go-snippets)
-(add-hook 'before-save-hook 'gofmt-before-save)
-(add-hook 'go-mode-hook (lambda ()
-                          (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)))
-(add-hook 'go-mode-hook (lambda ()
-                          (local-set-key (kbd "C-c i") 'go-goto-imports)))
-(add-hook 'go-mode-hook (lambda ()
-                          (local-set-key (kbd "M-.") 'godef-jump)))
+(use-package go-mode
+  :ensure t
+  :config
+  (add-hook 'before-save-hook 'gofmt-before-save)
+  (add-hook 'go-mode-hook (lambda ()
+                                 (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)))
+  (add-hook 'go-mode-hook (lambda ()
+                            (local-set-key (kbd "C-c i") 'go-goto-imports)))
+  (add-hook 'go-mode-hook (lambda ()
+                            (local-set-key (kbd "M-.") 'godef-jump))))
+(use-package go-autocomplete
+  :ensure t)
+(use-package go-snippets
+  :ensure t)
 
 ;; Python
 (use-package auto-virtualenv
