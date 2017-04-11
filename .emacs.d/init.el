@@ -180,27 +180,27 @@
 (setq alchemist-goto-elixir-source-dir "~/opt/brew/Cellar/elixir/1.3.0/src/elixir-1.3.0")
 
 ;; Web Mode
-(defun use-local-eslint ()
-  "Use the eslint that is installed in a local `node_modules` directory."
-  (let* ((root (locate-dominating-file
-                (or (buffer-file-name) default-directory)
-                "node_modules"))
-         (eslint (and root
-                      (expand-file-name "node_modules/.bin/eslint"
-                                        root))))
-    (when (and eslint (file-executable-p eslint))
-      (setq-local flycheck-javascript-eslint-executable eslint))))
 (use-package web-mode
   :ensure t
+  :mode "\\.erb\\'"
+  :mode "\\.eex\\'"
+  :mode "\\.js[x]?\\'"
+  :mode "\\.html?\\'"
   :config
-  (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.eex\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.js[x]?\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.tpl\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.handlebars\\'" . web-mode))
+  (defun my/project-eslint-hook ()
+    "Find eslint installed in project"
+    (let* ((root (locate-dominating-file
+                  (or (buffer-file-name) default-directory)
+                  "node_modules"))
+           (eslint (and root
+                        (expand-file-name "node_modules/.bin/eslint"
+                                          root))))
+      (when (and eslint (file-executable-p eslint))
+        (setq-local flycheck-javascript-eslint-executable eslint))))
+  (add-hook 'flycheck-mode-hook #'my/project-eslint-hook)
+
   (flycheck-add-mode 'javascript-eslint 'web-mode)
-  (add-hook 'flycheck-mode-hook #'use-local-eslint)
+
   (setq
    web-mode-code-indent-offset 2
    web-mode-css-indent-offset 2
