@@ -44,9 +44,7 @@
     company-ghc
     company-ghci
     dash
-    edts
     elm-mode
-    erlang
     exec-path-from-shell
     f
     go-autocomplete
@@ -199,11 +197,6 @@
    web-mode-markup-indent-offset 2
    web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'"))))
 
-;; Erlang
-(add-hook 'after-init-hook 'my-after-init-hook)
-(defun my-after-init-hook ()
-  "Start Erlang Development Tool Suite."
-  (require 'edts-start))
 ;; Elixir
 (use-package elixir-mode
   :ensure t
