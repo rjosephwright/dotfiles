@@ -44,11 +44,9 @@
     dash
     elm-mode
     f
-    inf-ruby
     magit
     markdown-mode
     queue
-    rbenv
     rsense
     sbt-mode
     smex
@@ -149,12 +147,6 @@
   (setq
    hindent-reformat-buffer-on-save t
    hindent-style "gibiansky"))
-
-;; Ruby
-(require 'rbenv)
-(global-rbenv-mode)
-(add-hook 'ruby-mode-hook 'robe-mode)
-(add-to-list 'auto-mode-alist '("\\.ru\\'" . ruby-mode))
 
 ;; Web Mode
 (use-package web-mode
