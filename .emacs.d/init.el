@@ -13,7 +13,6 @@
  '(cider-prompt-for-symbol nil)
  '(fill-column 80)
  '(js-indent-level 2)
- '(org-agenda-files (quote ("~/.emacs.d/org-mode")))
  '(package-selected-packages
    (quote
     (auto-virtualenv pyvenv hindent haskell-snippets racer intero yaml-mode web-mode vagrant-tramp use-package sublime-themes smex rust-mode rsense rbenv ponylang-mode paredit org-plus-contrib org markdown-mode magit inf-ruby ido-ubiquitous go-snippets go-mode go-autocomplete geiser fold-this flycheck-rust exec-path-from-shell elm-mode edts company-ghci company-ghc company-cabal color-theme cider better-defaults alchemist)))
@@ -29,8 +28,7 @@
 ;; Elpa
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
 			 ("marmalade" . "http://marmalade-repo.org/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")
-                         ("org" . "http://orgmode.org/elpa/")))
+                         ("melpa" . "http://melpa.milkbox.net/packages/")))
 (package-initialize)
 ;; Install desired packages automatically
 (when (not package-archive-contents)
@@ -59,8 +57,6 @@
     inf-ruby
     magit
     markdown-mode
-    org
-    org-plus-contrib
     queue
     rbenv
     rsense
@@ -210,13 +206,6 @@
    web-mode-css-indent-offset 2
    web-mode-markup-indent-offset 2
    web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'"))))
-
-;; Org mode
-(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-cc" 'org-capture)
-(global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cb" 'org-iswitchb)
 
 ;; Erlang
 (add-hook 'after-init-hook 'my-after-init-hook)
