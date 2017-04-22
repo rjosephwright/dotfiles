@@ -14,7 +14,7 @@
  '(js-indent-level 2)
  '(package-selected-packages
    (quote
-    (adoc-mode auto-virtualenv pyvenv hindent haskell-snippets racer intero yaml-mode web-mode vagrant-tramp use-package sublime-themes smex rust-mode paredit markdown-mode magit ido-ubiquitous go-snippets go-mode go-autocomplete geiser fold-this flycheck-rust exec-path-from-shell elm-mode company-ghci company-ghc company-cabal color-theme cider better-defaults alchemist)))
+    (dracula-theme adoc-mode auto-virtualenv pyvenv hindent haskell-snippets racer intero yaml-mode web-mode vagrant-tramp use-package sublime-themes smex rust-mode paredit markdown-mode magit ido-ubiquitous go-snippets go-mode go-autocomplete geiser fold-this flycheck-rust exec-path-from-shell elm-mode company-ghci company-ghc company-cabal color-theme cider better-defaults alchemist)))
  '(safe-local-variable-values (quote ((encoding . utf-8))))
  '(tramp-default-method "scpx"))
 (custom-set-faces
@@ -69,11 +69,13 @@
   :ensure t)
 
 ;; Appearance
+(use-package dracula-theme
+  :ensure t)
+
 (setq inhibit-splash-screen t)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (column-number-mode t)
-(load-theme 'spolsky t)
 (set-face-attribute 'default nil :font "Source Code Pro-12")
 
 ;; Keys
