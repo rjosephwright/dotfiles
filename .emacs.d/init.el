@@ -88,8 +88,11 @@
 
 ;; Auto-complete and yasnippet
 (add-hook 'after-init-hook 'global-company-mode)
-(require 'yasnippet)
-(yas-global-mode 1)
+
+(use-package yasnippet
+  :ensure t
+  :config
+  (yas-global-mode 1))
 
 ;; Move autosave files
 (setq backup-directory-alist
