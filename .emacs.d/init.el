@@ -115,7 +115,7 @@
   (ido-mode t)
   (setq ido-enable-flex-matching t))
 
-(use-package ido-ubiquitous
+(use-package ido-completing-read+
   :ensure t
   :config
   (ido-ubiquitous-mode t))
