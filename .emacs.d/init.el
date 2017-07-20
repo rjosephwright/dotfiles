@@ -3,6 +3,9 @@
 ;;; Commentary:
 ;; My not so über Emacs init
 
+(if (file-exists-p "~/.emacs.d/init/env.el")
+    (load "~/.emacs.d/init/env"))
+
 ;;; Code:
 ;; Variables set via customize
 (custom-set-variables
