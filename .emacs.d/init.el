@@ -62,6 +62,13 @@
 (eval-when-compile
   (require 'use-package))
 
+;; Align equals signs - https://stackoverflow.com/a/8129994
+(defadvice align-regexp (around align-regexp-with-spaces)
+  "Never use tabs for alignment."
+  (let ((indent-tabs-mode nil))
+    ad-do-it))
+(ad-activate 'align-regexp)
+
 ;; Flycheck
 (use-package flycheck
   :ensure t
