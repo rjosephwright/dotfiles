@@ -193,7 +193,6 @@
   :mode "\\.ex[s]?\\'")
 (use-package alchemist
   :ensure t
-  :mode "\\.ex[s]?\\'"
   :config
   (setq
    alchemist-goto-erlang-source-dir "~/.emacs.d/alchemist-src/erlang"
