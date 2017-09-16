@@ -196,8 +196,8 @@
   :mode "\\.ex[s]?\\'"
   :config
   (setq
-   alchemist-goto-erlang-source-dir "~/opt/brew/Cellar/erlang-r19/19.0.1/share/src/otp-OTP-19.0.1"
-   alchemist-goto-elixir-source-dir "~/opt/brew/Cellar/elixir/1.3.0/src/elixir-1.3.0"))
+   alchemist-goto-erlang-source-dir "~/.emacs.d/alchemist-src/erlang"
+   alchemist-goto-elixir-source-dir "~/.emacs.d/alchemist-src/elixir"))
 
 ;; Go
 (use-package go-mode
