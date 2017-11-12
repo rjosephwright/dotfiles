@@ -17,7 +17,7 @@
  '(js-indent-level 2)
  '(package-selected-packages
    (quote
-    (terraform-mode a groovy-mode sbt-mode rsense clojure-mode elixir-mode dracula-theme adoc-mode auto-virtualenv pyvenv hindent haskell-snippets racer intero yaml-mode web-mode vagrant-tramp use-package sublime-themes smex rust-mode paredit markdown-mode magit go-snippets go-mode go-autocomplete geiser fold-this flycheck-rust exec-path-from-shell elm-mode company-ghci company-ghc company-cabal color-theme cider better-defaults alchemist)))
+    (go-projectile flx-ido projectile ido-completing-read+ yasnippet terraform-mode a groovy-mode sbt-mode rsense clojure-mode elixir-mode dracula-theme adoc-mode auto-virtualenv pyvenv hindent haskell-snippets racer intero yaml-mode web-mode vagrant-tramp use-package sublime-themes smex rust-mode paredit markdown-mode magit go-snippets go-mode go-autocomplete geiser fold-this flycheck-rust exec-path-from-shell elm-mode company-ghci company-ghc company-cabal color-theme cider better-defaults alchemist)))
  '(safe-local-variable-values (quote ((encoding . utf-8))))
  '(tramp-default-method "scpx"))
 (custom-set-faces
@@ -69,6 +69,12 @@
     ad-do-it))
 (ad-activate 'align-regexp)
 
+;; Projectile
+(use-package projectile
+  :ensure t)
+(use-package flx-ido
+  :ensure t)
+
 ;; Flycheck
 (use-package flycheck
   :ensure t
@@ -111,8 +117,7 @@
 (use-package exec-path-from-shell
   :ensure t
   :config
-  (exec-path-from-shell-initialize)
-  (exec-path-from-shell-copy-env "GOPATH"))
+  (exec-path-from-shell-initialize))
 
 (use-package paredit
   :ensure t)
@@ -216,6 +221,8 @@
 (use-package go-autocomplete
   :ensure t)
 (use-package go-snippets
+  :ensure t)
+(use-package go-projectile
   :ensure t)
 
 ;; Python
