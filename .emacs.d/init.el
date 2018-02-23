@@ -44,7 +44,6 @@
     company-ghc
     company-ghci
     dash
-    elm-mode
     f
     magit
     markdown-mode
@@ -247,6 +246,13 @@
   :ensure t
   :config
   (setq cider-prompt-for-symbol nil))
+
+(use-package elm-mode
+  :ensure t
+  :config
+  (setq elm-format-on-save t)
+  (add-to-list 'exec-path "~/.npm-packages/bin")
+  (add-to-list 'company-backends 'company-elm))
 
 ;; Linux kernel
 (defun c-lineup-arglist-tabs-only (_)
