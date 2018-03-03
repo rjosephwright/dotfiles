@@ -251,7 +251,7 @@
   :ensure t
   :config
   (setq elm-format-on-save t)
-  (add-to-list 'exec-path "~/.npm-packages/bin")
+  (add-to-list 'exec-path (concat (expand-file-name "~") "/.npm-packages/bin"))
   (add-to-list 'company-backends 'company-elm))
 
 ;; Linux kernel
