@@ -17,7 +17,7 @@
  '(js-indent-level 2)
  '(package-selected-packages
    (quote
-    (quack go-projectile flx-ido projectile ido-completing-read+ yasnippet terraform-mode a groovy-mode sbt-mode rsense clojure-mode elixir-mode dracula-theme adoc-mode auto-virtualenv pyvenv hindent haskell-snippets racer intero yaml-mode web-mode vagrant-tramp use-package sublime-themes smex rust-mode paredit markdown-mode magit go-snippets go-mode go-autocomplete geiser fold-this flycheck-rust exec-path-from-shell elm-mode company-ghci company-ghc company-cabal color-theme cider better-defaults alchemist)))
+    (sphinx-frontend sphinx-mode quack go-projectile flx-ido projectile ido-completing-read+ yasnippet terraform-mode a groovy-mode sbt-mode rsense clojure-mode elixir-mode dracula-theme adoc-mode auto-virtualenv pyvenv hindent haskell-snippets racer intero yaml-mode web-mode vagrant-tramp use-package sublime-themes smex rust-mode paredit markdown-mode magit go-snippets go-mode go-autocomplete geiser fold-this flycheck-rust exec-path-from-shell elm-mode company-ghci company-ghc company-cabal color-theme cider better-defaults alchemist)))
  '(safe-local-variable-values (quote ((encoding . utf-8))))
  '(tramp-default-method "scpx"))
 (custom-set-faces
@@ -318,6 +318,10 @@
   :config
   (autoload 'adoc-mode "adoc-mode" nil t)
   (add-to-list 'auto-mode-alist '("\\.asc\\'" . adoc-mode)))
+(use-package sphinx-mode
+  :ensure t)
+(use-package sphinx-frontend
+  :ensure t)
 
 (provide 'init)
 ;;; init.el ends here
