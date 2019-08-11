@@ -90,7 +90,7 @@
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (column-number-mode t)
-(set-face-attribute 'default nil :font "Source Code Pro-12")
+(set-face-attribute 'default nil :font "Source Code Pro-14")
 
 ;; Keys
 (setq mac-command-modifier 'meta)
