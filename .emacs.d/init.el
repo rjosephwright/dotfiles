@@ -352,7 +352,7 @@
   :ensure t
   :config
   (autoload 'adoc-mode "adoc-mode" nil t)
-  (add-to-list 'auto-mode-alist '("\\.asc\\'" . adoc-mode)))
+  (add-to-list 'auto-mode-alist '("\\.adoc\\'" . adoc-mode)))
 (use-package sphinx-mode
   :ensure t)
 (use-package sphinx-frontend
