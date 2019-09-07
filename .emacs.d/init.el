@@ -17,7 +17,7 @@
  '(js-indent-level 2)
  '(package-selected-packages
    (quote
-    (sphinx-frontend sphinx-mode quack go-projectile flx-ido projectile ido-completing-read+ yasnippet terraform-mode a groovy-mode sbt-mode rsense clojure-mode elixir-mode dracula-theme adoc-mode auto-virtualenv pyvenv hindent haskell-snippets racer intero yaml-mode web-mode vagrant-tramp use-package sublime-themes smex rust-mode paredit markdown-mode magit go-snippets go-mode go-autocomplete geiser fold-this flycheck-rust exec-path-from-shell elm-mode company-ghci company-ghc company-cabal color-theme cider better-defaults alchemist)))
+    (company-lsp lsp-ui reason-mode sphinx-frontend sphinx-mode quack go-projectile flx-ido projectile ido-completing-read+ yasnippet terraform-mode a groovy-mode sbt-mode rsense clojure-mode elixir-mode dracula-theme adoc-mode auto-virtualenv pyvenv hindent haskell-snippets racer intero yaml-mode web-mode vagrant-tramp use-package sublime-themes smex rust-mode paredit markdown-mode magit go-snippets go-mode go-autocomplete geiser fold-this flycheck-rust exec-path-from-shell company-ghci company-ghc company-cabal color-theme cider better-defaults alchemist)))
  '(safe-local-variable-values (quote ((encoding . utf-8))))
  '(tramp-default-method "scpx"))
 (custom-set-faces
@@ -309,6 +309,33 @@
 
 ;; Groovy
 (use-package groovy-mode
+  :ensure t)
+
+;; Language server
+(use-package lsp-mode
+  :ensure t)
+(use-package lsp-ui
+  :config
+  (add-hook 'lsp-mode-hook 'lsp-ui-mode)
+  :ensure t)
+(use-package company-lsp
+  :config
+  (push 'company-lsp company-backends)
+  :ensure t)
+
+;; Reason ML
+(use-package reason-mode
+  :config
+  (add-hook 'reason-mode-hook #'flycheck-mode)
+  (add-hook 'reason-mode-hook #'lsp-deferred)
+  (add-to-list 'auto-mode-alist '("\\.re\\'" . reason-mode))
+  (lsp-register-client
+   (make-lsp-client :new-connection (lsp-stdio-connection
+				     (concat (expand-file-name "~") "/.local/bin/reason-language-server"))
+		    :major-modes '(reason-mode)
+		    :notification-handlers (ht ("client/registerCapability" 'ignore))
+		    :priority 1
+		    :server-id 'reason-ls))
   :ensure t)
 
 ;; Terraform
