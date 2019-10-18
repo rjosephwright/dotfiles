@@ -172,6 +172,7 @@
   :mode "\\.erb\\'"
   :mode "\\.eex\\'"
   :mode "\\.js[x]?\\'"
+  :mode "\\.ts[x]?\\'"
   :mode "\\.html?\\'"
   :config
   (defun my/project-eslint-hook ()
