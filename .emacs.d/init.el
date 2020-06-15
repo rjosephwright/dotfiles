@@ -69,7 +69,11 @@
 
 ;; Projectile
 (use-package projectile
-  :ensure t)
+  :ensure t
+  :config
+  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+  (projectile-mode +1))
 (use-package flx-ido
   :ensure t)
 
@@ -226,7 +230,9 @@
 (use-package go-snippets
   :ensure t)
 (use-package go-projectile
-  :ensure t)
+  :ensure t
+  :config
+  (require 'go-projectile))
 
 ;; Python
 (use-package auto-virtualenv
