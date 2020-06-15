@@ -83,9 +83,6 @@
   :config
   (add-hook 'after-init-hook #'global-flycheck-mode))
 
-(use-package flycheck-rust
-  :ensure t)
-
 ;; Appearance
 (use-package dracula-theme
   :ensure t)
@@ -301,11 +298,15 @@
                 (c-set-style "linux-tabs-only")))))
 
 ;; Rust
+(use-package flycheck-rust
+ :ensure t)
+
 (use-package rust-mode
   :ensure t
   :config
   (define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
-  (setq company-tooltip-align-annotations t))
+  (setq company-tooltip-align-annotations t)
+  (setq rust-format-on-save t))
 
 (use-package racer
   :ensure t
