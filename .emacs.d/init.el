@@ -353,7 +353,14 @@
 
 ;; Terraform
 (use-package terraform-mode
-  :ensure t)
+  :ensure t
+  :config
+  (lsp-register-client
+   (make-lsp-client :new-connection (lsp-stdio-connection
+				     `(,(concat (expand-file-name "~") "/.local/bin/terraform-ls") "serve"))
+		    :major-modes '(terraform-mode)
+		    :server-id 'terraform-ls))
+  (add-hook 'terraform-mode-hook #'lsp-deferred))
 
 ;; Writing
 (use-package adoc-mode
