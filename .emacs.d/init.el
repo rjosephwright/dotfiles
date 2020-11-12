@@ -88,6 +88,11 @@
 (tool-bar-mode -1)
 (column-number-mode t)
 (set-face-attribute 'default nil :font "Source Code Pro-14")
+; For emacsclient:
+(setq default-frame-alist '((font . "Source Code Pro-14")
+			    (menu-bar-lines . 0)
+			    (horizontal-scroll-bars . nil)
+			    (vertical-scroll-bars . nil)))
 
 ;; Keys
 (setq mac-command-modifier 'meta)
