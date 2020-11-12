@@ -38,9 +38,6 @@
   '(async
     better-defaults
     color-theme
-    company-cabal
-    company-ghc
-    company-ghci
     dash
     f
     magit
@@ -161,19 +158,22 @@
 (use-package haskell-mode
   :ensure t
   :mode "\\.hs\\'")
-
-(use-package intero
+(use-package lsp-haskell
   :ensure t
   :config
-  (add-hook 'haskell-mode-hook 'intero-mode))
-
+  (add-hook 'haskell-mode-hook #'lsp))
 (use-package hindent
   :ensure t
   :config
   (add-hook 'haskell-mode-hook #'hindent-mode)
   (setq
-   hindent-reformat-buffer-on-save t
-   hindent-style "gibiansky"))
+   hindent-reformat-buffer-on-save t))
+(use-package company-cabal
+  :ensure t)
+(use-package company-ghc
+  :ensure t)
+(use-package company-ghci
+  :ensure t)
 
 ;; Web Mode
 (use-package web-mode
