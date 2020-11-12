@@ -38,7 +38,6 @@
   '(async
     better-defaults
     color-theme
-    company
     company-cabal
     company-ghc
     company-ghci
@@ -97,6 +96,13 @@
 (setq mac-command-modifier 'meta)
 (global-set-key "\C-w" 'backward-kill-word) ; Redefine C-w
 (global-set-key "\C-x\C-k" 'kill-region)    ; Give previously defined C-w a different shortcut
+
+;; Company
+(use-package company
+  :ensure t
+  :config
+  (setq company-idle-delay 0)
+  (setq company-minimum-prefix-length 1))
 
 ;; Auto-complete and yasnippet
 (add-hook 'after-init-hook 'global-company-mode)
@@ -210,22 +216,16 @@
    alchemist-goto-elixir-source-dir "~/.emacs.d/alchemist-src/elixir"))
 
 ;; Go
+(defun lsp-go-install-save-hooks ()
+  "Add hooks for Go  to format and organize imports."
+  (add-hook 'before-save-hook #'lsp-format-buffer t t)
+  (add-hook 'before-save-hook #'lsp-organize-imports t t))
 (use-package go-mode
   :ensure t
   :mode "\\.go\\'"
   :config
-  (add-hook 'before-save-hook 'gofmt-before-save)
-  (add-hook 'go-mode-hook
-            (lambda ()
-              (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)))
-  (add-hook 'go-mode-hook
-            (lambda ()
-              (local-set-key (kbd "C-c i") 'go-goto-imports)))
-  (add-hook 'go-mode-hook
-            (lambda ()
-              (local-set-key (kbd "M-.") 'godef-jump))))
-(use-package go-autocomplete
-  :ensure t)
+  (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
+  (add-hook 'go-mode-hook #'lsp-deferred))
 (use-package go-snippets
   :ensure t)
 (use-package go-projectile
@@ -328,15 +328,8 @@
 
 ;; Language server
 (use-package lsp-mode
-  :ensure t)
-(use-package lsp-ui
-  :config
-  (add-hook 'lsp-mode-hook 'lsp-ui-mode)
-  :ensure t)
-(use-package company-lsp
-  :config
-  (push 'company-lsp company-backends)
-  :ensure t)
+  :ensure t
+  :commands (lsp lsp-deferred))
 
 ;; Reason ML
 (use-package reason-mode
