@@ -85,6 +85,7 @@
   (load-theme 'dracula t))
 
 (setq inhibit-splash-screen t)
+(setq ring-bell-function 'ignore)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (column-number-mode t)
