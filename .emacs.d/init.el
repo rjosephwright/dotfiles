@@ -80,7 +80,9 @@
 
 ;; Appearance
 (use-package dracula-theme
-  :ensure t)
+  :ensure t
+  :config
+  (load-theme 'dracula t))
 
 (setq inhibit-splash-screen t)
 (scroll-bar-mode -1)
