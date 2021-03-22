@@ -43,7 +43,6 @@
     magit
     markdown-mode
     queue
-    rsense
     sbt-mode
     sublime-themes
     use-package
@@ -178,8 +177,6 @@
    hindent-reformat-buffer-on-save t))
 (use-package company-cabal
   :ensure t)
-(use-package company-ghc
-  :ensure t)
 (use-package company-ghci
   :ensure t)
 
@@ -269,8 +266,7 @@
   :config
   (setq elm-format-on-save t)
   (setq elm-package-json "elm.json")
-  (add-to-list 'exec-path (concat (expand-file-name "~") "/.local/npm-packages/bin"))
-  (add-to-list 'company-backends 'company-elm))
+  (add-to-list 'exec-path (concat (expand-file-name "~") "/.local/npm-packages/bin")))
 
 ;; Linux kernel
 (defun c-lineup-arglist-tabs-only (_)
