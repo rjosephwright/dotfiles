@@ -376,5 +376,9 @@
 (use-package sphinx-frontend
   :ensure t)
 
+;; TOML
+(use-package toml-mode
+  :ensure t)
+
 (provide 'init)
 ;;; init.el ends here
