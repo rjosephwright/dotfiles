@@ -186,7 +186,6 @@
   :mode "\\.erb\\'"
   :mode "\\.eex\\'"
   :mode "\\.js[x]?\\'"
-  :mode "\\.ts[x]?\\'"
   :mode "\\.html?\\'"
   :config
   (defun my/project-eslint-hook ()
@@ -209,6 +208,15 @@
    web-mode-markup-indent-offset 2
    web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'"))))
 
+;; Typescript
+(use-package typescript-mode
+  :ensure t
+  :mode "\\.ts[x]?\\'"
+  :config
+  (setq typescript-indent-level 2)
+  (add-hook 'typescript-mode-hook #'lsp-deferred)
+  (add-hook 'typescript-mode-hook #'lsp-install-save-hooks))
+
 ;; Elixir
 (use-package elixir-mode
   :ensure t
@@ -221,15 +229,11 @@
    alchemist-goto-elixir-source-dir "~/.emacs.d/alchemist-src/elixir"))
 
 ;; Go
-(defun lsp-go-install-save-hooks ()
-  "Add hooks for Go  to format and organize imports."
-  (add-hook 'before-save-hook #'lsp-format-buffer t t)
-  (add-hook 'before-save-hook #'lsp-organize-imports t t))
 (use-package go-mode
   :ensure t
   :mode "\\.go\\'"
   :config
-  (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
+  (add-hook 'go-mode-hook #'lsp-install-save-hooks)
   (add-hook 'go-mode-hook #'lsp-deferred))
 (use-package go-snippets
   :ensure t)
@@ -334,6 +338,11 @@
 (use-package lsp-mode
   :ensure t
   :commands (lsp lsp-deferred))
+
+(defun lsp-install-save-hooks ()
+  "Add hooks to format and organize imports."
+  (add-hook 'before-save-hook #'lsp-format-buffer t t)
+  (add-hook 'before-save-hook #'lsp-organize-imports t t))
 
 ;; Reason ML
 (use-package reason-mode
