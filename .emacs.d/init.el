@@ -186,36 +186,14 @@
   :mode "\\.erb\\'"
   :mode "\\.eex\\'"
   :mode "\\.js[x]?\\'"
+  :mode "\\.ts[x]?\\'"
   :mode "\\.html?\\'"
   :config
-  (defun my/project-eslint-hook ()
-    "Find eslint installed in project"
-    (let* ((root (locate-dominating-file
-                  (or (buffer-file-name) default-directory)
-                  "node_modules"))
-           (eslint (and root
-                        (expand-file-name "node_modules/.bin/eslint"
-                                          root))))
-      (when (and eslint (file-executable-p eslint))
-        (setq-local flycheck-javascript-eslint-executable eslint))))
-  (add-hook 'flycheck-mode-hook #'my/project-eslint-hook)
-
-  (flycheck-add-mode 'javascript-eslint 'web-mode)
-
+  (add-hook 'web-mode-hook #'lsp)
   (setq
    web-mode-code-indent-offset 2
    web-mode-css-indent-offset 2
-   web-mode-markup-indent-offset 2
-   web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'"))))
-
-;; Typescript
-(use-package typescript-mode
-  :ensure t
-  :mode "\\.ts[x]?\\'"
-  :config
-  (setq typescript-indent-level 2)
-  (add-hook 'typescript-mode-hook #'lsp-deferred)
-  (add-hook 'typescript-mode-hook #'lsp-install-save-hooks))
+   web-mode-markup-indent-offset 2))
 
 ;; Elixir
 (use-package elixir-mode
