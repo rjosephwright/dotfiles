@@ -1,4 +1,8 @@
+.emacs.d/.dap-breakpoints
+.emacs.d/.extension/
 .emacs.d/.lsp-session-*
+.emacs.d/alchemist-src/
+.emacs.d/eshell/
 .emacs.d/network-security.data
 .emacs.d/projectile-bookmarks.eld
 .emacs.d/smex-items
