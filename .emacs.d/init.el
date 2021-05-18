@@ -225,6 +225,12 @@
   :ensure t
   :config
   (add-hook 'window-configuration-change-hook 'auto-virtualenv-set-virtualenv))
+(use-package lsp-pyright
+  :ensure t
+  :config
+  (add-hook 'python-mode-hook (lambda ()
+				(require 'lsp-pyright)
+				(lsp-deferred))))
 
 (use-package vagrant-tramp
   :ensure t
