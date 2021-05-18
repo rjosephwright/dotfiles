@@ -241,6 +241,7 @@
 (use-package clojure-mode
   :ensure t
   :config
+  (add-hook 'clojure-mode-hook #'enable-paredit-mode)
   (define-clojure-indent
     (alet 'defun)
     (mlet 'defun)))
