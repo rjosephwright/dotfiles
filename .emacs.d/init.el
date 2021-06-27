@@ -292,6 +292,15 @@
                 (setq show-trailing-whitespace t)
                 (c-set-style "linux-tabs-only")))))
 
+;; C#
+(use-package omnisharp
+  :ensure t)
+(use-package csharp-mode
+  :ensure t
+  :mode "\\.cs\\'"
+  :config
+  (add-hook 'csharp-mode-hook #'lsp-deferred))
+
 ;; Rust
 (use-package flycheck-rust
  :ensure t)
