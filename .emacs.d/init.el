@@ -297,7 +297,6 @@
   :ensure t)
 (use-package csharp-mode
   :ensure t
-  :mode "\\.cs\\'"
   :config
   (add-hook 'csharp-mode-hook #'lsp-deferred))
 
