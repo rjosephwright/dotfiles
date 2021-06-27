@@ -16,9 +16,8 @@
  '(fill-column 80)
  '(js-indent-level 2)
  '(package-selected-packages
-   (quote
-    (toml-mode haskell-mode company hover racket-mode lsp-haskell lsp-mode yasnippet-snippets company-terraform terraform-doc elm-mode reason-mode zig-mode sphinx-frontend sphinx-mode quack go-projectile flx-ido projectile ido-completing-read+ yasnippet terraform-mode a groovy-mode sbt-mode clojure-mode elixir-mode dracula-theme adoc-mode auto-virtualenv pyvenv hindent haskell-snippets racer intero yaml-mode web-mode vagrant-tramp use-package sublime-themes smex rust-mode paredit markdown-mode magit go-snippets go-mode go-autocomplete geiser fold-this flycheck-rust exec-path-from-shell company-ghci company-cabal color-theme cider better-defaults alchemist)))
- '(safe-local-variable-values (quote ((encoding . utf-8))))
+   '(omnisharp lsp-pyright toml-mode haskell-mode company hover racket-mode lsp-haskell lsp-mode yasnippet-snippets company-terraform terraform-doc elm-mode reason-mode zig-mode sphinx-frontend sphinx-mode quack go-projectile flx-ido projectile ido-completing-read+ yasnippet terraform-mode a groovy-mode sbt-mode clojure-mode elixir-mode dracula-theme adoc-mode auto-virtualenv pyvenv hindent haskell-snippets racer intero yaml-mode web-mode vagrant-tramp use-package sublime-themes smex rust-mode paredit markdown-mode magit go-snippets go-mode go-autocomplete geiser fold-this flycheck-rust exec-path-from-shell company-ghci company-cabal color-theme cider better-defaults alchemist))
+ '(safe-local-variable-values '((encoding . utf-8)))
  '(tramp-default-method "scpx"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
