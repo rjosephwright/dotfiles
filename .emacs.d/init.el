@@ -301,23 +301,16 @@
   (add-hook 'csharp-mode-hook #'lsp-deferred))
 
 ;; Rust
-(use-package flycheck-rust
- :ensure t)
-
-(use-package rust-mode
+(use-package rustic
   :ensure t
+  :custom
+  (lsp-rust-analyzer-cargo-watch-command "clippy")
+  (lsp-eldoc-render-all t)
+  (lsp-idle-delay 0.6)
+  (lsp-rust-analyzer-server-display-inline-hints t)
   :config
-  (define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
-  (setq company-tooltip-align-annotations t)
-  (setq rust-format-on-save t))
-
-(use-package racer
-  :ensure t
-  :config
-  (add-hook 'rust-mode-hook #'racer-mode)
-  (add-hook 'racer-mode-hook #'eldoc-mode)
-  (add-hook 'racer-mode-hook #'company-mode)
-  (setq racer-rust-src-path "~/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library"))
+  (setq rustic-format-on-save t)
+  (add-hook 'rustic-mode-hook #'lsp-deferred))
 
 ;; Groovy
 (use-package groovy-mode
