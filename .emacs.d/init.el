@@ -323,10 +323,10 @@
 ;; Language server
 (use-package lsp-mode
   :ensure t
-  :config
+  :custom
   ;; Performance options, see https://emacs-lsp.github.io/lsp-mode/page/performance/.
-  (setq gc-cons-threshold 1600000)
-  (setq read-process-output-max (* 1024 1024))
+  (gc-cons-threshold 3200000)
+  (read-process-output-max (* 1024 2048))
   :commands (lsp lsp-deferred))
 
 (defun lsp-install-save-hooks ()
