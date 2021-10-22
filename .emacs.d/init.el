@@ -325,7 +325,9 @@
   ;; Performance options, see https://emacs-lsp.github.io/lsp-mode/page/performance/.
   (gc-cons-threshold 3200000)
   (read-process-output-max (* 1024 2048))
-  :commands (lsp lsp-deferred))
+  :commands (lsp lsp-deferred)
+  :config
+  (setq lsp-headerline-breadcrumb-enable nil))
 
 (defun lsp-install-save-hooks ()
   "Add hooks to format and organize imports."
