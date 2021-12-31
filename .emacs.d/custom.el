@@ -7,7 +7,7 @@
  '(fill-column 80)
  '(js-indent-level 2)
  '(package-selected-packages
-   '(rustic lsp-ui omnisharp lsp-pyright toml-mode haskell-mode company hover racket-mode lsp-haskell lsp-mode yasnippet-snippets company-terraform terraform-doc elm-mode reason-mode zig-mode sphinx-frontend sphinx-mode quack go-projectile flx-ido projectile ido-completing-read+ yasnippet terraform-mode a groovy-mode sbt-mode clojure-mode elixir-mode dracula-theme adoc-mode auto-virtualenv pyvenv hindent haskell-snippets racer intero yaml-mode web-mode vagrant-tramp use-package smex rust-mode paredit markdown-mode magit go-snippets go-mode go-autocomplete geiser fold-this flycheck-rust exec-path-from-shell company-ghci company-cabal cider better-defaults alchemist))
+   '(nix-mode toml-mode sphinx-frontend sphinx-mode adoc-mode terraform-mode reason-mode zig-mode groovy-mode rustic omnisharp elm-mode cider clojure-mode lsp-pyright auto-virtualenv go-projectile go-snippets go-mode alchemist elixir-mode web-mode company-ghci company-cabal hindent lsp-haskell haskell-mode geiser quack smex ido-completing-read+ paredit exec-path-from-shell yasnippet-snippets yasnippet company dracula-theme flycheck flx-ido projectile yaml-mode vagrant-tramp use-package sbt-mode queue markdown-mode magit f dash better-defaults async))
  '(safe-local-variable-values '((encoding . utf-8)))
  '(tramp-default-method "scpx"))
 (custom-set-faces
