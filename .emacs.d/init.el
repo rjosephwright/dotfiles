@@ -71,9 +71,9 @@
 (set-face-attribute 'default nil :font "Source Code Pro-9")
 ; For emacsclient:
 (setq default-frame-alist '((font . "Source Code Pro-9")
-			    (menu-bar-lines . 0)
-			    (horizontal-scroll-bars . nil)
-			    (vertical-scroll-bars . nil)))
+                            (menu-bar-lines . 0)
+                            (horizontal-scroll-bars . nil)
+                            (vertical-scroll-bars . nil)))
 
 ;; Keys
 (setq mac-command-modifier 'meta)
@@ -183,7 +183,7 @@
   :config
   (setq
    alchemist-goto-erlang-source-dir (concat user-emacs-directory "alchemist-src/erlang")
-   alchemist-goto-elixir-source-dir (concat user-emacs-directory "alchemist-src/elixir"))
+   alchemist-goto-elixir-source-dir (concat user-emacs-directory "alchemist-src/elixir")))
 
 ;; Go
 (use-package go-mode
@@ -208,8 +208,8 @@
   :ensure t
   :config
   (add-hook 'python-mode-hook (lambda ()
-				(require 'lsp-pyright)
-				(lsp-deferred))))
+                                (require 'lsp-pyright)
+                                (lsp-deferred))))
 
 (use-package vagrant-tramp
   :ensure t
@@ -234,7 +234,7 @@
   :config
   (setq elm-format-on-save t)
   (setq elm-package-json "elm.json")
-  (add-to-list 'exec-path (expand-file-name "~/.local/npm-packages/bin"))
+  (add-to-list 'exec-path (expand-file-name "~/.local/npm-packages/bin")))
 
 ;; Linux kernel
 (defun c-lineup-arglist-tabs-only (_)
@@ -261,12 +261,12 @@
             (let ((filename (buffer-file-name)))
               ;; Enable kernel mode for the appropriate files
               (when (or
-		     (and filename
-			  (string-match (expand-file-name "~/code/linux")
-					filename))
-		     (and filename
-			  (string-match (expand-file-name "~/code/eudyptula")
-					filename)))
+                     (and filename
+                          (string-match (expand-file-name "~/code/linux")
+                                        filename))
+                     (and filename
+                          (string-match (expand-file-name "~/code/eudyptula")
+                                        filename)))
                 (setq indent-tabs-mode t)
                 (setq show-trailing-whitespace t)
                 (c-set-style "linux-tabs-only")))))
@@ -323,11 +323,11 @@
   (add-to-list 'auto-mode-alist '("\\.re\\'" . reason-mode))
   (lsp-register-client
    (make-lsp-client :new-connection (lsp-stdio-connection
-				     (expand-file-name "~/.local/bin/reason-language-server")
-		    :major-modes '(reason-mode)
-		    :notification-handlers (ht ("client/registerCapability" 'ignore))
-		    :priority 1
-		    :server-id 'reason-ls))
+                                     (expand-file-name "~/.local/bin/reason-language-server"))
+                    :major-modes '(reason-mode)
+                    :notification-handlers (ht ("client/registerCapability" 'ignore))
+                    :priority 1
+                    :server-id 'reason-ls))
   :ensure t)
 
 ;; Terraform
@@ -336,9 +336,9 @@
   :config
   (lsp-register-client
    (make-lsp-client :new-connection (lsp-stdio-connection
-				     `(,(expand-file-name "~/.local/bin/terraform-ls") "serve"))
-		    :major-modes '(terraform-mode)
-		    :server-id 'terraform-ls))
+                                     `(,(expand-file-name "~/.local/bin/terraform-ls") "serve"))
+                    :major-modes '(terraform-mode)
+                    :server-id 'terraform-ls))
   (add-hook 'terraform-mode-hook #'lsp-deferred))
 
 ;; Writing
