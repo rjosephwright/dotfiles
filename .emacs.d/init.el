@@ -4,7 +4,8 @@
 ;; My not so über Emacs init
 
 ;; Custom set variables go here.
-(load (concat user-emacs-directory "custom.el") 'noerror)
+(setq custom-file (concat user-emacs-directory "custom.el"))
+(load custom-file 'noerror)
 
 ;;; Code:
 
