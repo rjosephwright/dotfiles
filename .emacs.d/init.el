@@ -357,5 +357,9 @@
 (use-package toml-mode
   :ensure t)
 
+;; Nix
+(use-package nix-mode
+  :ensure t)
+
 (provide 'init)
 ;;; init.el ends here
