@@ -182,8 +182,8 @@
   :ensure t
   :config
   (setq
-   alchemist-goto-erlang-source-dir "~/.emacs.d/alchemist-src/erlang"
-   alchemist-goto-elixir-source-dir "~/.emacs.d/alchemist-src/elixir"))
+   alchemist-goto-erlang-source-dir (concat user-emacs-directory "alchemist-src/erlang")
+   alchemist-goto-elixir-source-dir (concat user-emacs-directory "alchemist-src/elixir"))
 
 ;; Go
 (use-package go-mode
@@ -234,7 +234,7 @@
   :config
   (setq elm-format-on-save t)
   (setq elm-package-json "elm.json")
-  (add-to-list 'exec-path (concat (expand-file-name "~") "/.local/npm-packages/bin")))
+  (add-to-list 'exec-path (expand-file-name "~/.local/npm-packages/bin"))
 
 ;; Linux kernel
 (defun c-lineup-arglist-tabs-only (_)
@@ -323,7 +323,7 @@
   (add-to-list 'auto-mode-alist '("\\.re\\'" . reason-mode))
   (lsp-register-client
    (make-lsp-client :new-connection (lsp-stdio-connection
-				     (concat (expand-file-name "~") "/.local/bin/reason-language-server"))
+				     (expand-file-name "~/.local/bin/reason-language-server")
 		    :major-modes '(reason-mode)
 		    :notification-handlers (ht ("client/registerCapability" 'ignore))
 		    :priority 1
@@ -336,7 +336,7 @@
   :config
   (lsp-register-client
    (make-lsp-client :new-connection (lsp-stdio-connection
-				     `(,(concat (expand-file-name "~") "/.local/bin/terraform-ls") "serve"))
+				     `(,(expand-file-name "~/.local/bin/terraform-ls") "serve"))
 		    :major-modes '(terraform-mode)
 		    :server-id 'terraform-ls))
   (add-hook 'terraform-mode-hook #'lsp-deferred))
