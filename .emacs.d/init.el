@@ -3,11 +3,10 @@
 ;;; Commentary:
 ;; My not so über Emacs init
 
-;; Custom set variables go here.
-(setq custom-file (concat user-emacs-directory "custom.el"))
-(load custom-file 'noerror)
-
 ;;; Code:
+;; Custom set variables go here.
+(let ((custom-file (concat user-emacs-directory "lisp/custom.el")))
+  (load custom-file 'noerror))
 
 ;; Elpa
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
