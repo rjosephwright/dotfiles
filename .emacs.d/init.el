@@ -4,6 +4,8 @@
 ;; My not so über Emacs init
 
 ;;; Code:
+(add-to-list 'load-path (concat user-emacs-directory "lisp"))
+
 ;; Custom set variables go here.
 (let ((custom-file (concat user-emacs-directory "lisp/custom.el")))
   (load custom-file 'noerror))
@@ -363,6 +365,9 @@
 ;; Nix
 (use-package nix-mode
   :ensure t)
+
+;; Org mode
+(require 'init-org)
 
 (provide 'init)
 ;;; init.el ends here
