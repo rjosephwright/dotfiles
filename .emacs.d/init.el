@@ -69,12 +69,16 @@
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (column-number-mode t)
-(set-face-attribute 'default nil :font "Source Code Pro-9")
-; For emacsclient:
-(setq default-frame-alist '((font . "Source Code Pro-9")
-                            (menu-bar-lines . 0)
-                            (horizontal-scroll-bars . nil)
-                            (vertical-scroll-bars . nil)))
+(let* ((font-size
+        (cond ((string= system-type "darwin") "12")
+              ((string= system-type "gnu/linux") "9")))
+       (font (concat "Source Code Pro-" font-size)))
+  (set-face-attribute 'default nil :font font)
+  ;; For emacsclient:
+  (setq default-frame-alist '((font . font)
+                              (menu-bar-lines . 0)
+                              (horizontal-scroll-bars . nil)
+                              (vertical-scroll-bars . nil))))
 
 ;; Keys
 (setq mac-command-modifier 'meta)
