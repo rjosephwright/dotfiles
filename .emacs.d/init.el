@@ -76,7 +76,7 @@
        (font (concat "Source Code Pro-" font-size)))
   (set-face-attribute 'default nil :font font)
   ;; For emacsclient:
-  (setq default-frame-alist '((font . font)
+  (setq default-frame-alist `((font . ,font)
                               (menu-bar-lines . 0)
                               (horizontal-scroll-bars . nil)
                               (vertical-scroll-bars . nil))))
