@@ -7,8 +7,8 @@
 (add-to-list 'load-path (concat user-emacs-directory "lisp"))
 
 ;; Custom set variables go here.
-(let ((custom-file (concat user-emacs-directory "lisp/custom.el")))
-  (load custom-file 'noerror))
+(setq custom-file (concat user-emacs-directory "lisp/custom.el"))
+(load custom-file 'noerror)
 
 ;; Elpa
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
