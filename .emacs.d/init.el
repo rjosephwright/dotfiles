@@ -14,25 +14,10 @@
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
                          ("melpa" . "https://melpa.org/packages/")))
 (package-initialize)
-;; Install desired packages automatically
 (when (not package-archive-contents)
   (package-refresh-contents))
-(defvar package-list
-  '(async
-    better-defaults
-    dash
-    f
-    magit
-    markdown-mode
-    queue
-    sbt-mode
-    use-package
-    vagrant-tramp
-    yaml-mode))
-(dolist (package package-list)
-  (when (not (package-installed-p package))
-    (package-install package)))
-
+(when (not (package-installed-p 'use-package))
+  (package-install 'use-package))
 (eval-when-compile
   (require 'use-package))
 
@@ -179,6 +164,10 @@
    web-mode-code-indent-offset 2
    web-mode-css-indent-offset 2
    web-mode-markup-indent-offset 2))
+
+;; YAML
+(use-package yaml-mode
+  :ensure t)
 
 ;; Elixir
 (use-package elixir-mode
