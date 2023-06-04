@@ -6,6 +6,7 @@
  '(byte-compile-warnings '(cl-functions))
  '(fill-column 80)
  '(js-indent-level 2)
+ '(lock-file-name-transforms `((".*" ,temporary-file-directory t)))
  '(org-agenda-files
    '("~/Dropbox/org/gtd/inbox.org" "~/Dropbox/org/gtd/projects.org" "~/Dropbox/org/gtd/scheduled.org"))
  '(org-capture-templates

@@ -5,8 +5,8 @@
 ;;; Code:
 (provide 'init-org)
 
-(global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cb" 'org-switchb)
-(global-set-key "\C-cc" 'org-capture)
+(global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c b") 'org-switchb)
+(global-set-key (kbd "C-c c") 'org-capture)
 
 ;;; init-org.el ends here
