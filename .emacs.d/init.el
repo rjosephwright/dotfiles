@@ -11,8 +11,8 @@
   (load custom-file 'noerror))
 
 ;; Elpa
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("melpa" . "http://melpa.org/packages/")))
+(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+                         ("melpa" . "https://melpa.org/packages/")))
 (package-initialize)
 ;; Install desired packages automatically
 (when (not package-archive-contents)
