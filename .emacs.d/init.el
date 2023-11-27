@@ -28,6 +28,15 @@
     ad-do-it))
 (ad-activate 'align-regexp)
 
+;; Eglot
+(defvar eglot-server-programs)
+(with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs '((ruby-mode ruby-ts-mode) "ruby-lsp"))
+  (add-to-list 'eglot-server-programs '(terraform-mode "terraform-ls" "serve")))
+
+;; Ruby
+(add-hook 'ruby-mode-hook 'eglot-ensure)
+
 ;; Projectile
 (use-package projectile
   :ensure t
@@ -127,7 +136,7 @@
   :mode "\\.ts[x]?\\'"
   :mode "\\.html?\\'"
   :config
-  (add-hook 'web-mode-hook #'lsp)
+  (add-hook 'web-mode-hook #'eglot-ensure)
   (setq
    web-mode-code-indent-offset 2
    web-mode-css-indent-offset 2
@@ -142,8 +151,8 @@
   :ensure t
   :mode "\\.go\\'"
   :config
-  (add-hook 'go-mode-hook #'lsp-install-save-hooks)
-  (add-hook 'go-mode-hook #'lsp-deferred))
+  (add-hook 'go-mode-hook #'my/eglot-save-hooks)
+  (add-hook 'go-mode-hook #'eglot-ensure))
 (use-package go-snippets
   :ensure t)
 (use-package go-projectile
@@ -156,13 +165,7 @@
   :ensure t
   :config
   (add-hook 'window-configuration-change-hook 'auto-virtualenv-set-virtualenv))
-(use-package lsp-pyright
-  :ensure t
-  :config
-  (add-hook 'python-mode-hook (lambda ()
-                                (require 'lsp-pyright)
-                                (lsp-deferred))))
-
+(add-hook 'python-mode-hook 'eglot-ensure)
 
 ;; Linux kernel
 (defun c-lineup-arglist-tabs-only (_)
@@ -199,34 +202,16 @@
                 (setq show-trailing-whitespace t)
                 (c-set-style "linux-tabs-only")))))
 
-
-;; Language server
-(use-package lsp-mode
-  :ensure t
-  :custom
-  ;; Performance options, see https://emacs-lsp.github.io/lsp-mode/page/performance/.
-  (gc-cons-threshold 3200000)
-  (read-process-output-max (* 1024 2048))
-  :commands (lsp lsp-deferred)
-  :config
-  (setq lsp-headerline-breadcrumb-enable nil))
-
-(defun lsp-install-save-hooks ()
+(defun my/eglot-save-hooks ()
   "Add hooks to format and organize imports."
-  (add-hook 'before-save-hook #'lsp-format-buffer t t)
-  (add-hook 'before-save-hook #'lsp-organize-imports t t))
-
+  (add-hook 'before-save-hook #'eglot-format-buffer t t)
+  (add-hook 'before-save-hook #'eglot-code-action-organize-imports t t))
 
 ;; Terraform
 (use-package terraform-mode
   :ensure t
   :config
-  (lsp-register-client
-   (make-lsp-client :new-connection (lsp-stdio-connection
-                                     `(,(expand-file-name "~/.local/bin/terraform-ls") "serve"))
-                    :major-modes '(terraform-mode)
-                    :server-id 'terraform-ls))
-  (add-hook 'terraform-mode-hook #'lsp-deferred))
+  (add-hook 'terraform-mode-hook #'eglot-ensure))
 
 ;; Writing
 (use-package adoc-mode
