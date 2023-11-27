@@ -118,38 +118,6 @@
   :config
   (global-set-key (kbd "M-x") 'smex))
 
-;; Scheme
-(use-package quack
-  :ensure t)
-
-(use-package geiser
-  :ensure t
-  :config
-  (defvar geiser-active-implementations)
-  (defvar geiser-repl-query-on-kill-p)
-  (setq
-   geiser-active-implementations '(racket)
-   geiser-repl-query-on-kill-p nil))
-
-;; Haskell
-(use-package haskell-mode
-  :ensure t
-  :mode "\\.hs\\'")
-(use-package lsp-haskell
-  :ensure t
-  :config
-  (add-hook 'haskell-mode-hook #'lsp))
-(use-package hindent
-  :ensure t
-  :config
-  (add-hook 'haskell-mode-hook #'hindent-mode)
-  (setq
-   hindent-reformat-buffer-on-save t))
-(use-package company-cabal
-  :ensure t)
-(use-package company-ghci
-  :ensure t)
-
 ;; Web Mode
 (use-package web-mode
   :ensure t
@@ -168,17 +136,6 @@
 ;; YAML
 (use-package yaml-mode
   :ensure t)
-
-;; Elixir
-(use-package elixir-mode
-  :ensure t
-  :mode "\\.ex[s]?\\'")
-(use-package alchemist
-  :ensure t
-  :config
-  (setq
-   alchemist-goto-erlang-source-dir (concat user-emacs-directory "alchemist-src/erlang")
-   alchemist-goto-elixir-source-dir (concat user-emacs-directory "alchemist-src/elixir")))
 
 ;; Go
 (use-package go-mode
@@ -206,30 +163,6 @@
                                 (require 'lsp-pyright)
                                 (lsp-deferred))))
 
-(use-package vagrant-tramp
-  :ensure t
-  :config
-  (eval-after-load 'tramp '(vagrant-tramp-add-method)))
-
-;; Clojure
-(use-package clojure-mode
-  :ensure t
-  :config
-  (add-hook 'clojure-mode-hook #'enable-paredit-mode)
-  (define-clojure-indent
-    (alet 'defun)
-    (mlet 'defun)))
-(use-package cider
-  :ensure t
-  :config
-  (setq cider-prompt-for-symbol nil))
-
-(use-package elm-mode
-  :ensure t
-  :config
-  (setq elm-format-on-save t)
-  (setq elm-package-json "elm.json")
-  (add-to-list 'exec-path (expand-file-name "~/.local/npm-packages/bin")))
 
 ;; Linux kernel
 (defun c-lineup-arglist-tabs-only (_)
@@ -266,25 +199,6 @@
                 (setq show-trailing-whitespace t)
                 (c-set-style "linux-tabs-only")))))
 
-;; Rust
-(use-package rustic
-  :ensure t
-  :custom
-  (lsp-rust-analyzer-cargo-watch-command "clippy")
-  (lsp-eldoc-render-all t)
-  (lsp-idle-delay 0.6)
-  (lsp-rust-analyzer-server-display-inline-hints t)
-  :config
-  (setq rustic-format-on-save t)
-  (add-hook 'rustic-mode-hook #'lsp-deferred))
-
-;; Groovy
-(use-package groovy-mode
-  :ensure t)
-
-;; Zig
-(use-package zig-mode
-  :ensure t)
 
 ;; Language server
 (use-package lsp-mode
@@ -302,20 +216,6 @@
   (add-hook 'before-save-hook #'lsp-format-buffer t t)
   (add-hook 'before-save-hook #'lsp-organize-imports t t))
 
-;; Reason ML
-(use-package reason-mode
-  :config
-  (add-hook 'reason-mode-hook #'flycheck-mode)
-  (add-hook 'reason-mode-hook #'lsp-deferred)
-  (add-to-list 'auto-mode-alist '("\\.re\\'" . reason-mode))
-  (lsp-register-client
-   (make-lsp-client :new-connection (lsp-stdio-connection
-                                     (expand-file-name "~/.local/bin/reason-language-server"))
-                    :major-modes '(reason-mode)
-                    :notification-handlers (ht ("client/registerCapability" 'ignore))
-                    :priority 1
-                    :server-id 'reason-ls))
-  :ensure t)
 
 ;; Terraform
 (use-package terraform-mode
@@ -341,10 +241,6 @@
 
 ;; TOML
 (use-package toml-mode
-  :ensure t)
-
-;; Nix
-(use-package nix-mode
   :ensure t)
 
 ;; Org mode
