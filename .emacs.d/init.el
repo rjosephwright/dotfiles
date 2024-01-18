@@ -37,6 +37,14 @@
 ;; Ruby
 (add-hook 'ruby-mode-hook 'eglot-ensure)
 
+;; Rust
+(use-package rustic
+  :ensure t
+  :config
+  (setq rustic-lsp-client 'eglot)
+  (add-hook 'rustic-mode-hook #'eglot-ensure)
+  (add-hook 'rustic-mode-hook #'my/eglot-save-hooks))
+
 ;; Projectile
 (use-package projectile
   :ensure t
