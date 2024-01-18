@@ -15,7 +15,7 @@
       "* TODO %i%?")
      ("s" "Scheduled" entry
       (file "~/Dropbox/org/gtd/scheduled.org")
-      "* %i%? \n %U")))
+      "* %i%? \12 %U")))
  '(org-gtd-directory "~/Dropbox/org/gtd/")
  '(org-gtd-mode t)
  '(org-refile-targets
