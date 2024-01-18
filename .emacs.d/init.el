@@ -210,6 +210,8 @@
 ;; Terraform
 (use-package terraform-mode
   :ensure t
+  :custom
+  (terraform-format-on-save t)
   :config
   (add-hook 'terraform-mode-hook #'eglot-ensure))
 
