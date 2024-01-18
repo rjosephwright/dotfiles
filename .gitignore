@@ -1,6 +1,8 @@
+.emacs.d/.cache
 .emacs.d/.dap-breakpoints
 .emacs.d/.extension/
 .emacs.d/.lsp-session-*
+.emacs.d/.org-id-locations
 .emacs.d/alchemist-src/
 .emacs.d/eshell/
 .emacs.d/network-security.data
