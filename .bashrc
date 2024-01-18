@@ -26,7 +26,8 @@ alias gerp=grep
 [ -f ${HOME}/.asdf/asdf.sh ] && . ${HOME}/.asdf/asdf.sh
 
 # Shell completions.
-which aws_completer 1>/dev/null && complete -C aws_completer aws
+which aws_completer >/dev/null 2>&1 && complete -C aws_completer aws
+which az.completion.sh >/dev/null 2>&1 && . $(which az.completion.sh)
 
 [ -f ${HOME}/.local/brew/completions/bash/brew ] && . ${HOME}/.local/brew/completions/bash/brew
 
