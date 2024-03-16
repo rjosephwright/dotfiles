@@ -28,6 +28,23 @@
     ad-do-it))
 (ad-activate 'align-regexp)
 
+;; Quelpa
+(use-package quelpa
+  :ensure t)
+(use-package quelpa-use-package
+  :ensure t)
+
+(use-package copilot
+  :ensure t
+  :quelpa (copilot :fetcher github
+                   :repo "copilot-emacs/copilot.el"
+                   :branch "main"
+                   :files ("dist" "*.el"))
+  :config
+  (add-hook 'prog-mode-hook 'copilot-mode)
+  (define-key copilot-completion-map (kbd "TAB") 'copilot-next-completion)
+  (define-key copilot-completion-map (kbd "C-e") 'copilot-accept-completion))
+
 ;; Eglot
 (defvar eglot-server-programs)
 (with-eval-after-load 'eglot

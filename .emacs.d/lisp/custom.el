@@ -24,7 +24,7 @@
      ("~/Dropbox/org/gtd/scheduled.org" :maxlevel . 2)))
  '(org-refile-use-outline-path 'file)
  '(package-selected-packages
-   '(org-gtd nix-mode toml-mode sphinx-frontend sphinx-mode adoc-mode terraform-mode reason-mode zig-mode groovy-mode rustic omnisharp elm-mode cider clojure-mode lsp-pyright auto-virtualenv go-projectile go-snippets go-mode alchemist elixir-mode web-mode company-ghci company-cabal hindent lsp-haskell haskell-mode geiser quack smex ido-completing-read+ paredit exec-path-from-shell yasnippet-snippets yasnippet company dracula-theme flycheck flx-ido projectile yaml-mode vagrant-tramp use-package sbt-mode queue markdown-mode magit f dash better-defaults async))
+   '(copilot editorconfig quelpa-use-package quelpa org-gtd nix-mode toml-mode sphinx-frontend sphinx-mode adoc-mode terraform-mode reason-mode zig-mode groovy-mode rustic omnisharp elm-mode cider clojure-mode lsp-pyright auto-virtualenv go-projectile go-snippets go-mode alchemist elixir-mode web-mode company-ghci company-cabal hindent lsp-haskell haskell-mode geiser quack smex ido-completing-read+ paredit exec-path-from-shell yasnippet-snippets yasnippet company dracula-theme flycheck flx-ido projectile yaml-mode vagrant-tramp use-package sbt-mode queue markdown-mode magit f dash better-defaults async))
  '(safe-local-variable-values '((encoding . utf-8)))
  '(tramp-default-method "scpx"))
 (custom-set-faces
