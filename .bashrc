@@ -28,6 +28,7 @@ alias gerp=grep
 # Shell completions.
 which aws_completer >/dev/null 2>&1 && complete -C aws_completer aws
 which az.completion.sh >/dev/null 2>&1 && . $(which az.completion.sh)
+which terraform >/dev/null 2>&1 && complete -C $(which terraform) terraform
 
 [ -f ${HOME}/.local/brew/completions/bash/brew ] && . ${HOME}/.local/brew/completions/bash/brew
 
