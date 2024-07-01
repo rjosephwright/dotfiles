@@ -30,9 +30,9 @@ which aws_completer >/dev/null 2>&1 && complete -C aws_completer aws
 which az.completion.sh >/dev/null 2>&1 && . $(which az.completion.sh)
 which terraform >/dev/null 2>&1 && complete -C $(which terraform) terraform
 
-[ -f ${HOME}/.local/brew/completions/bash/brew ] && . ${HOME}/.local/brew/completions/bash/brew
+[ -f ${HOME}/.local/brew/share/google-cloud-sdk/completion.bash.inc ] && . ${HOME}/.local/brew/share/google-cloud-sdk/completion.bash.inc
 
-[ -f ${HOME}/.asdf/completions/asdf.bash ] && . ${HOME}/.asdf/completions/asdf.bash
+[ -f ${HOME}/.local/brew/completions/bash/brew ] && . ${HOME}/.local/brew/completions/bash/brew
 
 completion_dir=${HOME}/.local/share/bash-completion
 mkdir -p ${completion_dir}
