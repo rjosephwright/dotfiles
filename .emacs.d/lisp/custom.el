@@ -5,6 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(byte-compile-warnings '(cl-functions))
  '(copilot-indent-offset-warning-disable t)
+ '(copilot-max-char 1000000)
  '(fill-column 80)
  '(js-indent-level 2)
  '(lock-file-name-transforms `((".*" ,temporary-file-directory t)))
