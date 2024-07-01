@@ -16,4 +16,3 @@ EDITOR=vi; export EDITOR
 PS1=': [\u@\h] \w; '; export PS1
 
 [ -f ~/.bashrc ] && . ~/.bashrc
-[ -f ~/.asdf/asdf.sh ] && . ~/.asdf/asdf.sh

@@ -48,7 +48,7 @@
 ;; Eglot
 (defvar eglot-server-programs)
 (with-eval-after-load 'eglot
-  (add-to-list 'eglot-server-programs '((ruby-mode ruby-ts-mode) "ruby-lsp"))
+  (add-to-list 'eglot-server-programs '(ruby-mode . ("/Users/joseph/.local/share/mise/installs/ruby/3.2.2/bin/solargraph" "stdio")))
   (add-to-list 'eglot-server-programs '(terraform-mode "terraform-ls" "serve")))
 
 ;; Ruby

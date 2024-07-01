@@ -22,8 +22,8 @@ alias ll='ls -l'
 alias lla='ll -a'
 alias gerp=grep
 
-# Load asdf.
-[ -f ${HOME}/.asdf/asdf.sh ] && . ${HOME}/.asdf/asdf.sh
+# Load mise.
+which mise >/dev/null 2>&1 && eval "$(mise activate)"
 
 # Shell completions.
 which aws_completer >/dev/null 2>&1 && complete -C aws_completer aws
