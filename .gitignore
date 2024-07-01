@@ -12,5 +12,6 @@
 .emacs.d/elpa/
 .emacs.d/gotools/
 .emacs.d/ido.last
+.emacs.d/quelpa/
 .emacs.d/tramp
 .emacs.d/transient/
