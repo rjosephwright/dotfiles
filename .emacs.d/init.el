@@ -256,8 +256,5 @@
 (use-package toml-mode
   :ensure t)
 
-;; Org mode
-(require 'init-org)
-
 (provide 'init)
 ;;; init.el ends here
