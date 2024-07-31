@@ -36,9 +36,8 @@ which terraform >/dev/null 2>&1 && complete -C $(which terraform) terraform
 
 completion_dir=${HOME}/.local/share/bash-completion
 mkdir -p ${completion_dir}
-completions=$(ls ${completion_dir})
-for completion in ${completions}; do
-    . ${completion_dir}/${completion}
+for completion in ${completion_dir}/*; do
+    . ${completion}
 done
 
 # SSH agent.
