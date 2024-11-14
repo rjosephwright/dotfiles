@@ -187,10 +187,6 @@
   (require 'go-projectile))
 
 ;; Python
-(use-package auto-virtualenv
-  :ensure t
-  :config
-  (add-hook 'window-configuration-change-hook 'auto-virtualenv-set-virtualenv))
 (add-hook 'python-mode-hook 'eglot-ensure)
 
 ;; Linux kernel
