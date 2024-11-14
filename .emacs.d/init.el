@@ -32,14 +32,16 @@
 (use-package quelpa
   :ensure t)
 (use-package quelpa-use-package
-  :ensure t)
+  :ensure t
+  :config
+  (setq-default quelpa-build-tar-executable "~/.local/brew/bin/gtar"))
 
 (use-package copilot
   :ensure t
   :quelpa (copilot :fetcher github
                    :repo "copilot-emacs/copilot.el"
                    :branch "main"
-                   :files ("dist" "*.el"))
+                   :files ("*.el"))
   :config
   (add-hook 'prog-mode-hook 'copilot-mode)
   (define-key copilot-completion-map (kbd "TAB") 'copilot-next-completion)
