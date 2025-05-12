@@ -10,7 +10,17 @@
  '(js-indent-level 2)
  '(lock-file-name-transforms `((".*" ,temporary-file-directory t)))
  '(package-selected-packages
-   '(copilot editorconfig quelpa-use-package quelpa nix-mode toml-mode sphinx-frontend sphinx-mode adoc-mode terraform-mode reason-mode zig-mode groovy-mode rustic omnisharp elm-mode cider clojure-mode lsp-pyright auto-virtualenv go-projectile go-snippets go-mode alchemist elixir-mode web-mode company-ghci company-cabal hindent lsp-haskell haskell-mode geiser quack smex ido-completing-read+ paredit exec-path-from-shell yasnippet-snippets yasnippet company dracula-theme flycheck flx-ido projectile yaml-mode vagrant-tramp use-package sbt-mode queue markdown-mode magit f dash better-defaults async))
+   '(adoc-mode alchemist apheleia async auto-virtualenv better-defaults cider
+	       clojure-mode company company-cabal company-ghci copilot dash
+	       dracula-theme editorconfig eglot-fsharp elixir-mode elm-mode
+	       exec-path-from-shell f flx-ido flycheck flycheck-eglot
+	       fsharp-mode geiser go-mode go-projectile go-snippets groovy-mode
+	       haskell-mode hindent ido-completing-read+ lsp-haskell lsp-pyright
+	       magit markdown-mode nix-mode omnisharp paredit projectile
+	       python-black quack quelpa quelpa-use-package queue reason-mode
+	       rustic sbt-mode smex sphinx-frontend sphinx-mode terraform-mode
+	       tide toml-mode treesit-auto use-package vagrant-tramp web-mode
+	       yaml-mode yasnippet yasnippet-snippets zig-mode))
  '(safe-local-variable-values '((encoding . utf-8)))
  '(tramp-default-method "scpx"))
 (custom-set-faces
