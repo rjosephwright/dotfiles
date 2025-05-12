@@ -220,6 +220,10 @@
   (require 'go-projectile))
 
 ;; Python
+(use-package python-black
+  :ensure t
+  :after python
+  :hook (python-mode . python-black-on-save-mode))
 (add-hook 'python-mode-hook 'eglot-ensure)
 
 ;; Linux kernel
