@@ -77,8 +77,27 @@
 ;; Flycheck
 (use-package flycheck
   :ensure t
+  :init
+  (global-flycheck-mode))
+(use-package flycheck-eglot
+  :ensure t
+  :after (flycheck eglot)
   :config
-  (add-hook 'after-init-hook #'global-flycheck-mode))
+  (global-flycheck-eglot-mode 1))
+
+(use-package apheleia
+  :ensure apheleia
+  :diminish ""
+  :defines
+  apheleia-formatters
+  apheleia-mode-alist
+  :functions
+  apheleia-global-mode
+  :config
+  (let ((ts (alist-get 'apheleia-typescript apheleia-formatters)))
+    (setf (alist-get 'prettier-npx apheleia-formatters) ts))
+  (apheleia-global-mode +1))
+(setq-default indent-tabs-mode nil)
 
 ;; Appearance
 (use-package dracula-theme
@@ -155,13 +174,16 @@
   :config
   (global-set-key (kbd "M-x") 'smex))
 
+(use-package treesit-auto
+  :ensure t
+  :config
+  (global-treesit-auto-mode))
+
 ;; Web Mode
 (use-package web-mode
   :ensure t
   :mode "\\.erb\\'"
   :mode "\\.eex\\'"
-  :mode "\\.js[x]?\\'"
-  :mode "\\.ts[x]?\\'"
   :mode "\\.html?\\'"
   :config
   (add-hook 'web-mode-hook #'eglot-ensure)
@@ -170,9 +192,18 @@
    web-mode-css-indent-offset 2
    web-mode-markup-indent-offset 2))
 
-;; YAML
-(use-package yaml-mode
-  :ensure t)
+(defvar my/treesitter-modes
+  '(("\\.[jt]s\\'" . typescript-ts-mode)
+    ("\\.[jt]sx\\'" . tsx-ts-mode)
+    ("\\.go\\'" . go-ts-mode)
+    ("\\.y[a]?ml\\'" . yaml-ts-mode)))
+(dolist
+    (el my/treesitter-modes)
+  (let* ((pat (car el))
+	 (mode (cdr el))
+	 (mode-hook (intern (concat (symbol-name mode) "-hook"))))
+    (add-to-list 'auto-mode-alist `(,pat . ,mode))
+    (add-hook mode-hook 'eglot-ensure)))
 
 ;; Go
 (use-package go-mode
