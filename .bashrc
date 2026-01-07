@@ -36,7 +36,7 @@ which terraform >/dev/null 2>&1 && complete -C $(which terraform) terraform
 
 completion_dir=${HOME}/.local/share/bash-completion
 mkdir -p ${completion_dir}
-for completion in ${completion_dir}/*; do
+for completion in $(find ${completion_dir} -type f); do
     . ${completion}
 done
 
