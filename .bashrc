@@ -50,3 +50,5 @@ for ssh_key in ${ssh_keys}; do
         ssh-add ${ssh_key}
     fi
 done
+
+[ "${TERM_PROGRAM}" == "vscode" ] && . "$(code --locate-shell-integration-path bash)"
