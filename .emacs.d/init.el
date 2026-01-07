@@ -225,6 +225,7 @@
   :after python
   :hook (python-mode . python-black-on-save-mode))
 (add-hook 'python-mode-hook 'eglot-ensure)
+(add-hook 'python-mode-hook #'my/eglot-save-hooks)
 
 ;; Linux kernel
 (defun c-lineup-arglist-tabs-only (_)
