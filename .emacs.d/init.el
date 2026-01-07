@@ -290,5 +290,13 @@
 (use-package toml-mode
   :ensure t)
 
+;; Zig
+(use-package zig-mode
+  :ensure t
+  :mode "\\.zig\\'"
+  :config
+  (add-hook 'zig-mode-hook #'my/eglot-save-hooks)
+  (add-hook 'zig-mode-hook #'eglot-ensure))
+
 (provide 'init)
 ;;; init.el ends here
