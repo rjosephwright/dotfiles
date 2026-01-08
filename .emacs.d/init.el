@@ -177,6 +177,8 @@
 (use-package treesit-auto
   :ensure t
   :config
+  (setq treesit-auto-install t)
+  (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
 
 ;; Web Mode
