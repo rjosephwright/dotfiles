@@ -48,20 +48,22 @@
   (define-key copilot-completion-map (kbd "C-e") 'copilot-accept-completion))
 
 ;; Eglot
-(defvar eglot-server-programs)
-(with-eval-after-load 'eglot
-  (add-to-list 'eglot-server-programs '(ruby-mode . ("/Users/joseph/.local/share/mise/installs/ruby/3.2.2/bin/solargraph" "stdio")))
-  (add-to-list 'eglot-server-programs '(terraform-mode "terraform-ls" "serve")))
-
-;; Ruby
-(add-hook 'ruby-mode-hook 'eglot-ensure)
+(defun my/eglot-save-hooks ()
+  "Add hooks to format and organize imports."
+  (unless (derived-mode-p 'rust-mode 'rust-ts-mode)
+    (add-hook 'before-save-hook (lambda ()
+                                  (eglot-format-buffer)
+                                  (eglot-code-action-organize-imports nil)) t t)))
+(add-hook 'prog-mode-hook #'eglot-ensure)
+(add-hook 'prog-mode-hook #'my/eglot-save-hooks)
+(add-hook 'yaml-ts-mode-hook #'eglot-ensure)
+(add-hook 'yaml-ts-mode-hook #'my/eglot-save-hooks)
 
 ;; Rust
 (use-package rustic
   :ensure t
   :config
   (setq rustic-lsp-client 'eglot)
-  (add-hook 'rustic-mode-hook #'eglot-ensure)
   (add-hook 'rustic-mode-hook #'my/eglot-save-hooks))
 
 ;; Projectile
@@ -178,8 +180,8 @@
   :ensure t
   :config
   (setq treesit-auto-install t)
-  (treesit-auto-add-to-auto-mode-alist 'all)
-  (global-treesit-auto-mode))
+  (global-treesit-auto-mode)
+  (treesit-auto-add-to-auto-mode-alist 'all))
 
 ;; Web Mode
 (use-package web-mode
@@ -188,34 +190,11 @@
   :mode "\\.eex\\'"
   :mode "\\.html?\\'"
   :config
-  (add-hook 'web-mode-hook #'eglot-ensure)
   (setq
    web-mode-code-indent-offset 2
    web-mode-css-indent-offset 2
    web-mode-markup-indent-offset 2))
 
-(defvar my/treesitter-modes
-  '(("\\.[jt]s\\'" . typescript-ts-mode)
-    ("\\.[jt]sx\\'" . tsx-ts-mode)
-    ("\\.go\\'" . go-ts-mode)
-    ("\\.y[a]?ml\\'" . yaml-ts-mode)))
-(dolist
-    (el my/treesitter-modes)
-  (let* ((pat (car el))
-	 (mode (cdr el))
-	 (mode-hook (intern (concat (symbol-name mode) "-hook"))))
-    (add-to-list 'auto-mode-alist `(,pat . ,mode))
-    (add-hook mode-hook 'eglot-ensure)))
-
-;; Go
-(use-package go-mode
-  :ensure t
-  :mode "\\.go\\'"
-  :config
-  (add-hook 'go-mode-hook #'my/eglot-save-hooks)
-  (add-hook 'go-mode-hook #'eglot-ensure))
-(use-package go-snippets
-  :ensure t)
 (use-package go-projectile
   :ensure t
   :config
@@ -226,8 +205,6 @@
   :ensure t
   :after python
   :hook (python-mode . python-black-on-save-mode))
-(add-hook 'python-mode-hook 'eglot-ensure)
-(add-hook 'python-mode-hook #'my/eglot-save-hooks)
 
 ;; Linux kernel
 (defun c-lineup-arglist-tabs-only (_)
@@ -264,10 +241,6 @@
                 (setq show-trailing-whitespace t)
                 (c-set-style "linux-tabs-only")))))
 
-(defun my/eglot-save-hooks ()
-  "Add hooks to format and organize imports."
-  (add-hook 'before-save-hook #'eglot-format-buffer t t)
-  (add-hook 'before-save-hook #'eglot-code-action-organize-imports t t))
 
 ;; Terraform
 (use-package terraform-mode
@@ -291,14 +264,6 @@
 ;; TOML
 (use-package toml-mode
   :ensure t)
-
-;; Zig
-(use-package zig-mode
-  :ensure t
-  :mode "\\.zig\\'"
-  :config
-  (add-hook 'zig-mode-hook #'my/eglot-save-hooks)
-  (add-hook 'zig-mode-hook #'eglot-ensure))
 
 (provide 'init)
 ;;; init.el ends here
