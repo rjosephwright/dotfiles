@@ -22,11 +22,11 @@
   (require 'use-package))
 
 ;; Align equals signs - https://stackoverflow.com/a/8129994
-(defadvice align-regexp (around align-regexp-with-spaces)
-  "Never use tabs for alignment."
+(defun align-regexp--around (orig-align-regexp &rest args)
+  "Advice to make `align-regexp' use spaces, not tabs."
   (let ((indent-tabs-mode nil))
-    ad-do-it))
-(ad-activate 'align-regexp)
+    (apply orig-align-regexp args)))
+(advice-add 'align-regexp :around #'align-regexp--around)
 
 ;; Quelpa
 (use-package quelpa
