@@ -265,5 +265,9 @@
 (use-package toml-mode
   :ensure t)
 
+;; Zig
+(use-package zig-mode
+  :ensure t)
+
 (provide 'init)
 ;;; init.el ends here
