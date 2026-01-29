@@ -8,6 +8,8 @@ case $- in
         ;;
 esac
 
+[ -f /etc/bashrc ] && . /etc/bashrc
+
 # Aliases.
 case $(uname) in
     Darwin)
