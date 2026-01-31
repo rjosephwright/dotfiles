@@ -114,7 +114,7 @@
 (column-number-mode t)
 (let* ((font-size
         (cond ((string= system-type "darwin") "12")
-              ((string= system-type "gnu/linux") "14")
+              ((string= system-type "gnu/linux") "13")
               ((string= system-type "windows-nt") "10")))
        (font (concat "Source Code Pro-" font-size)))
   (set-face-attribute 'default nil :font font)
