@@ -53,4 +53,11 @@ for ssh_key in ${ssh_keys}; do
     fi
 done
 
+# Shell history
+shopt -s histappend
+PROMPT_COMMAND="history -a; ${PROMPT_COMMAND}"
+HISTSIZE=1000000
+HISTFILESIZE=2000000
+HISTCONTROL=ignoredups:erasedups
+
 [ "${TERM_PROGRAM}" == "vscode" ] && . "$(code --locate-shell-integration-path bash)"
