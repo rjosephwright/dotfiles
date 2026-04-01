@@ -58,6 +58,7 @@
 (add-hook 'prog-mode-hook #'my/eglot-save-hooks)
 (add-hook 'yaml-ts-mode-hook #'eglot-ensure)
 (add-hook 'yaml-ts-mode-hook #'my/eglot-save-hooks)
+(add-hook 'yaml-ts-mode-hook (lambda () (setq-local tab-width 2)))
 
 ;; Rust
 (use-package rustic
