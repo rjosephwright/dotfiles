@@ -55,9 +55,9 @@ done
 
 # Shell history
 shopt -s histappend
-PROMPT_COMMAND="history -a; ${PROMPT_COMMAND}"
-HISTSIZE=1000000
-HISTFILESIZE=2000000
-HISTCONTROL=ignoredups:erasedups
+PROMPT_COMMAND="history -a; history -c; history -r; ${PROMPT_COMMAND}"
+HISTSIZE=-1
+HISTFILESIZE=-1
+HISTCONTROL=ignoredups
 
 [ "${TERM_PROGRAM}" == "vscode" ] && . "$(code --locate-shell-integration-path bash)"
