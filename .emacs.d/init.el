@@ -270,5 +270,10 @@
 (use-package zig-mode
   :ensure t)
 
+;; Unobin
+(use-package unobin-ts-mode
+  :load-path "~/code/unobin/editors/emacs"
+  :mode ("\\.ub\\'" . unobin-ts-mode))
+
 (provide 'init)
 ;;; init.el ends here
