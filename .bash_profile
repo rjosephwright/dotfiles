@@ -8,7 +8,6 @@ EXTRA_PATH=
 [ -d ${HOME}/.local/bin ]              && EXTRA_PATH=${EXTRA_PATH}${HOME}/.local/bin:
 [ -d ${HOME}/.cargo/bin ]              && EXTRA_PATH=${EXTRA_PATH}${HOME}/.cargo/bin:
 [ -d ${HOME}/.fly/bin ]                && EXTRA_PATH=${EXTRA_PATH}${HOME}/.fly/bin:
-[ -d ${HOME}/.virtualenvs/aws/bin ]    && EXTRA_PATH=${EXTRA_PATH}${HOME}/.virtualenvs/aws/bin:
 PATH=${EXTRA_PATH}${PATH}; export PATH
 
 EDITOR=vi; export EDITOR
