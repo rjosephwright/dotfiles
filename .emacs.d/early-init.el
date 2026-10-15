@@ -1,5 +1,25 @@
 ;;; early-init.el --- Early startup settings -*- lexical-binding: t; -*-
 
+;; Package activation is handled explicitly by init.el.
+(setq package-enable-at-startup nil)
+
+(setq inhibit-splash-screen t
+      menu-bar-mode nil
+      tool-bar-mode nil
+      scroll-bar-mode nil)
+
+(let* ((font-size
+        (cond ((string= system-type "darwin") "12")
+              ((string= system-type "gnu/linux") "13")
+              ((string= system-type "windows-nt") "10")))
+       (font (concat "Source Code Pro-" font-size)))
+  (dolist (parameter `((font . ,font)
+                       (menu-bar-lines . 0)
+                       (tool-bar-lines . 0)
+                       (horizontal-scroll-bars . nil)
+                       (vertical-scroll-bars . nil)))
+    (add-to-list 'default-frame-alist parameter)))
+
 ;; Older GCC drivers derive an invalid macOS target from Darwin 25 and later.
 (when (and (eq system-type 'darwin)
            (>= (string-to-number operating-system-release) 25))

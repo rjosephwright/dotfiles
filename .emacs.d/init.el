@@ -119,22 +119,8 @@
   :config
   (load-theme 'dracula t))
 
-(setq inhibit-splash-screen t)
 (setq ring-bell-function 'ignore)
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
 (column-number-mode t)
-(let* ((font-size
-        (cond ((string= system-type "darwin") "12")
-              ((string= system-type "gnu/linux") "13")
-              ((string= system-type "windows-nt") "10")))
-       (font (concat "Source Code Pro-" font-size)))
-  (set-face-attribute 'default nil :font font)
-  ;; For emacsclient:
-  (setq default-frame-alist `((font . ,font)
-                              (menu-bar-lines . 0)
-                              (horizontal-scroll-bars . nil)
-                              (vertical-scroll-bars . nil))))
 
 ;; Keys
 (setq mac-command-modifier 'meta)
