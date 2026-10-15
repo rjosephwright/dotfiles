@@ -77,7 +77,12 @@
   :config
   (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-  (projectile-mode +1))
+  (projectile-mode +1)
+  (setq projectile-project-root-functions
+        '(projectile-root-local
+          projectile-root-marked
+          projectile-root-bottom-up)
+        projectile-require-project-root t))
 (use-package flx-ido
   :ensure t)
 
