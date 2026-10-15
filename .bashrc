@@ -8,15 +8,14 @@ case $- in
         ;;
 esac
 
-[ -f /etc/bashrc ] && . /etc/bashrc
-
-# Aliases.
+# OS-specific.
 case $(uname) in
     Darwin)
         alias ls='ls -FG'
         ;;
     Linux)
         alias ls='ls -F --color=auto'
+        [ -f /etc/bashrc ] && . /etc/bashrc
         ;;
 esac
 
