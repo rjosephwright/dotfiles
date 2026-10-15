@@ -64,9 +64,15 @@
 (add-hook 'yaml-ts-mode-hook #'my/eglot-save-hooks)
 (add-hook 'yaml-ts-mode-hook (lambda () (setq-local tab-width 2)))
 
+(require 'treesit)
+(setopt treesit-enabled-modes t
+        treesit-auto-install-grammar 'ask)
+
 ;; Rust
 (use-package rustic
   :ensure t
+  :init
+  (setq rust-mode-treesitter-derive t)
   :config
   (setq rustic-lsp-client 'eglot)
   (add-hook 'rustic-mode-hook #'my/eglot-save-hooks))
@@ -174,13 +180,6 @@
   :ensure t
   :config
   (global-set-key (kbd "M-x") 'smex))
-
-(use-package treesit-auto
-  :ensure t
-  :config
-  (setq treesit-auto-install t)
-  (global-treesit-auto-mode)
-  (treesit-auto-add-to-auto-mode-alist 'all))
 
 ;; Web Mode
 (use-package web-mode

@@ -21,7 +21,7 @@
 	       magit markdown-mode nix-mode omnisharp paredit projectile
 	       python-black quack quelpa quelpa-use-package queue reason-mode
 	       rustic sbt-mode smex sphinx-frontend sphinx-mode terraform-mode
-	       tide toml-mode treesit-auto use-package vagrant-tramp web-mode
+	       tide toml-mode use-package vagrant-tramp web-mode
 	       yaml-mode yasnippet yasnippet-snippets zig-mode))
  '(safe-local-variable-values '((encoding . utf-8)))
  '(tramp-default-method "scpx"))
