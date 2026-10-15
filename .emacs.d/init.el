@@ -1,4 +1,4 @@
-;;; init --- Summary
+;;; init.el --- Summary -*- lexical-binding: nil; -*-
 
 ;;; Commentary:
 ;; My not so über Emacs init
