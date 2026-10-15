@@ -43,7 +43,7 @@
                    :branch "main"
                    :files ("*.el"))
   :config
-  (add-hook 'prog-mode-hook 'copilot-mode)
+  (add-hook 'prog-mode-hook #'copilot-turn-on-unless-buffer-read-only)
   (define-key copilot-completion-map (kbd "TAB") 'copilot-next-completion)
   (define-key copilot-completion-map (kbd "C-e") 'copilot-accept-completion))
 
