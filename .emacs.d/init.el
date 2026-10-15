@@ -48,6 +48,10 @@
   (define-key copilot-completion-map (kbd "C-e") 'copilot-accept-completion))
 
 ;; Eglot
+(with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs
+               '((js-mode js-ts-mode typescript-mode typescript-ts-mode tsx-ts-mode)
+                 . ("tsc" "--lsp" "--stdio"))))
 (defun my/eglot-save-hooks ()
   "Add hooks to format and organize imports."
   (unless (derived-mode-p 'rust-mode 'rust-ts-mode)
