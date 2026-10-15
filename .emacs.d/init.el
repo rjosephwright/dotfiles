@@ -84,7 +84,9 @@
           projectile-root-bottom-up)
         projectile-require-project-root t))
 (use-package flx-ido
-  :ensure t)
+  :ensure t
+  :config
+  (flx-ido-mode 1))
 
 ;; Flycheck
 (use-package flycheck
@@ -174,7 +176,8 @@
 (use-package ido
   :config
   (ido-mode t)
-  (setq ido-enable-flex-matching t))
+  (setq ido-enable-flex-matching t
+        ido-case-fold t))
 
 (use-package ido-completing-read+
   :ensure t
