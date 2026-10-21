@@ -116,6 +116,7 @@
   :config
   (let ((ts (alist-get 'apheleia-typescript apheleia-formatters)))
     (setf (alist-get 'prettier-npx apheleia-formatters) ts))
+  (setf (alist-get 'terraform-mode apheleia-mode-alist) 'terraform)
   (apheleia-global-mode +1))
 (setq-default indent-tabs-mode nil)
 
