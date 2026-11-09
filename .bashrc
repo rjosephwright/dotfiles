@@ -60,3 +60,10 @@ HISTFILESIZE=-1
 HISTCONTROL=ignoredups
 
 [ "${TERM_PROGRAM}" == "vscode" ] && . "$(code --locate-shell-integration-path bash)"
+
+# Get rid of garbled terminal caused by Codex.
+uncodex()
+{
+    stty sane
+    printf '%b' '\033[?2026l\033[?1049l\033[?1000;1002;1003;1004;1006;2004l\033[>4;0m\033[=0u\033c'
+}
